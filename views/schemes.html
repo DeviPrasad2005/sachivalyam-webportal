@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Government Schemes & Welfare</title>
+  <style>
+    body {
+      background-color: #f3f4f6;
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #2d2d2d;
+      color: white;
+      padding: 16px 0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    header .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    section {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      padding: 24px;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 24px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .card {
+      padding: 16px;
+      border-left: 4px solid;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .blue { background-color: #eff6ff; border-color: #2563eb; }
+    .blue h3 { color: #1e3a8a; }
+
+    .green { background-color: #ecfdf5; border-color: #059669; }
+    .green h3 { color: #065f46; }
+
+    .yellow { background-color: #fefce8; border-color: #ca8a04; }
+    .yellow h3 { color: #92400e; }
+
+    .purple { background-color: #f5f3ff; border-color: #7c3aed; }
+    .purple h3 { color: #5b21b6; }
+
+    .card h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0 0 8px;
+    }
+
+    .card p {
+      margin: 4px 0;
+      color: #374151;
+    }
+
+    .card p:last-child {
+      font-size: 14px;
+      color: #6b7280;
+    }
+
+    footer {
+      background-color: #2d2d2d;
+      color: white;
+      text-align: center;
+      padding: 16px 0;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <h1>Government Schemes & Welfare Programs</h1>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <section>
+      <h2>Available Schemes for Residents</h2>
+
+      <div class="grid">
+
+        <!-- Scheme Card -->
+        <div class="card blue">
+          <h3>PM Awas Yojana</h3>
+          <p>Provides housing to economically weaker sections and low-income groups with financial assistance.</p>
+          <p>Eligibility: Income below ₹3 lakh/year</p>
+        </div>
+
+        <!-- Scheme Card -->
+        <div class="card green">
+          <h3>Rythu Bharosa Scheme</h3>
+          <p>Provides ₹13,500 financial aid per year to eligible farmers.</p>
+          <p>Eligibility: Small and marginal farmers</p>
+        </div>
+
+        <!-- Scheme Card -->
+        <div class="card yellow">
+          <h3>Pension Kanuka</h3>
+          <p>Monthly pension to senior citizens, widows, and disabled persons.</p>
+          <p>Eligibility: Age above 60 / Disability / Widow</p>
+        </div>
+
+        <!-- Scheme Card -->
+        <div class="card purple">
+          <h3>Arogya Sri Health Card</h3>
+          <p>Covers major health expenses for BPL families at government hospitals.</p>
+          <p>Eligibility: BPL families with health card</p>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Grama Sachivalayam. All Rights Reserved.
+  </footer>
+
+</body>
+</html>

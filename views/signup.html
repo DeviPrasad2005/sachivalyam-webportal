@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up - Gram Panchayat Portal</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-image: linear-gradient(rgba(22, 163, 74, 0.85), rgba(22, 163, 74, 0.85)),
+        url('https://images.unsplash.com/photo-1581091870632-dc6b1f3fe7c3?auto=format&fit=crop&w=1950&q=80');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      color: #333;
+    }
+
+    .signup-container {
+      background-color: #ffffff;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .signup-container h2 {
+      text-align: center;
+      color: #15803d;
+      margin-bottom: 1.5rem;
+    }
+
+    .signup-container label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .signup-container input {
+      width: 100%;
+      padding: 10px 12px;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    .signup-container input:focus {
+      border-color: #15803d;
+      box-shadow: 0 0 0 2px rgba(21, 128, 61, 0.2);
+    }
+
+    .signup-container button {
+      width: 100%;
+      background-color: #15803d;
+      color: #fff;
+      font-weight: 600;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .signup-container button:hover {
+      background-color: #166534;
+    }
+
+    .signup-container p {
+      text-align: center;
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    .signup-container a {
+      color: #15803d;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .signup-container a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="signup-container">
+    <h2>Create an Account</h2>
+    <form action="/signup" method="POST">
+      <label for="fullname">Full Name</label>
+      <input type="text" name="fullname" id="fullname" required />
+
+      <label for="email">Email Address</label>
+      <input type="email" name="email" id="email" required />
+
+      <label for="username">Username</label>
+      <input type="text" name="username" id="username" required />
+
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" required />
+
+      <button type="submit">Sign Up</button>
+    </form>
+
+    <p>Already have an account?
+      <a href="/login">Login</a>
+    </p>
+  </div>
+
+</body>
+</html>

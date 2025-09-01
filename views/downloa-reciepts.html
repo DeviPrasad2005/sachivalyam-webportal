@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Download Receipts</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      color: #333;
+    }
+
+    .header {
+      background-color: #2e2e2e;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      padding: 30px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .receipt-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .receipt-card {
+      background: white;
+      padding: 20px;
+      border-left: 4px solid #007BFF;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      border-radius: 5px;
+    }
+
+    .receipt-card h3 {
+      margin-top: 0;
+      color: #007BFF;
+    }
+
+    .download-btn {
+      display: inline-block;
+      margin-top: 10px;
+      background-color: #007BFF;
+      color: white;
+      padding: 8px 12px;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+
+    .download-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .footer {
+      background-color: #2e2e2e;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1>Download Receipts</h1>
+  </header>
+
+  <main class="container">
+    <section>
+      <h2>Your Payment Receipts</h2>
+      <div id="receipt-container" class="receipt-grid">
+        <!-- Dynamic receipts will be inserted here -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    &copy; 2025 Grama Sachivalayam. All Rights Reserved.
+  </footer>
+
+  <script>
+    window.onload = async function() {
+      try {
+        const res = await fetch('/api/receipts');
+        const data = await res.json();
+        const container = document.getElementById('receipt-container');
+        
+        if (!data.length) {
+          container.innerHTML = "<p>No receipts found.</p>";
+          return;
+        }
+
+        container.innerHTML = data.map(item => `
+          <div class="receipt-card">
+            <h3>${item.type} Receipt</h3>
+            <p><strong>Name:</strong> ${item.name}</p>
+            <p><strong>Amount:</strong> ₹${item.amount}</p>
+            <p><strong>Date:</strong> ${item.date}</p>
+            <a href="/download/${item.type}/${item.id}" class="download-btn">Download PDF</a>
+          </div>
+        `).join('');
+      } catch (err) {
+        document.getElementById('receipt-container').innerHTML = "<p>Error loading receipts.</p>";
+      }
+    };
+  </script>
+</body>
+</html>

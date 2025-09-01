@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Panel - Gram Panchayat</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+</head>
+<body class="bg-gray-100 min-h-screen text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-green-800 text-white shadow-md">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold">Admin Panel - Gram Panchayat</h1>
+      <nav>
+        <a href="/logout" class="text-sm hover:underline">Logout</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-6 py-10">
+
+    <h2 class="text-2xl font-bold text-green-700 mb-6">Welcome, Admin!</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- User Management -->
+      <div class="bg-white p-6 rounded-xl shadow-md">
+        <h3 class="text-xl font-semibold mb-2">👥 Manage Users</h3>
+        <p>Add, remove or edit user accounts and view user history.</p>
+        <a href="/admin/users" class="text-green-700 hover:underline text-sm mt-2 inline-block">Go to Users</a>
+      </div>
+
+      <!-- Tax Records -->
+      <div class="bg-white p-6 rounded-xl shadow-md">
+        <h3 class="text-xl font-semibold mb-2">💰 Tax Records</h3>
+        <p>Update and verify house, water, and other tax data.</p>
+        <a href="/admin/taxes" class="text-green-700 hover:underline text-sm mt-2 inline-block">View Tax Records</a>
+      </div>
+
+      <!-- Payment Reports -->
+      <div class="bg-white p-6 rounded-xl shadow-md">
+        <h3 class="text-xl font-semibold mb-2">📊 Payment Reports</h3>
+        <p>Generate monthly/yearly reports of tax payments.</p>
+        <a href="/admin/reports" class="text-green-700 hover:underline text-sm mt-2 inline-block">Generate Reports</a>
+      </div>
+
+      <!-- Schemes -->
+      <div class="bg-white p-6 rounded-xl shadow-md">
+        <h3 class="text-xl font-semibold mb-2">🛠️ Welfare Schemes</h3>
+        <p>Manage eligibility and applications for government schemes.</p>
+        <a href="/admin/schemes" class="text-green-700 hover:underline text-sm mt-2 inline-block">Manage Schemes</a>
+      </div>
+
+      <!-- Notices -->
+      <div class="bg-white p-6 rounded-xl shadow-md">
+        <h3 class="text-xl font-semibold mb-2">📢 Notices & Announcements</h3>
+        <p>Publish important notices to the public dashboard.</p>
+        <a href="/admin/notices" class="text-green-700 hover:underline text-sm mt-2 inline-block">Post Notices</a>
+      </div>
+
+      <!-- Forms -->
+      <div class="bg-white p-6 rounded-xl shadow-md">
+        <h3 class="text-xl font-semibold mb-2">📄 Forms & Downloads</h3>
+        <p>Upload, edit or remove downloadable forms for users.</p>
+        <a href="/admin/forms" class="text-green-700 hover:underline text-sm mt-2 inline-block">Manage Forms</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-green-800 text-white text-center py-4 mt-10">
+    <p class="text-sm">&copy; 2025 Gram Panchayat Admin Panel. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

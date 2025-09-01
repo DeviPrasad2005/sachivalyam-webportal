@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Dashboard - Gram Panchayat</title>
+  <style>
+    body {
+      background-color: #f3f4f6;
+      color: #1f2937;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #047857;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    header h1 {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    header a {
+      color: white;
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    header a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: auto;
+      padding: 2rem;
+    }
+
+    main h2 {
+      color: #047857;
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 2rem;
+    }
+
+    .grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .grid-4 {
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .card {
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      text-decoration: none;
+      color: inherit;
+      transition: box-shadow 0.2s ease-in-out;
+    }
+
+    .card:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .card h3 {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      font-size: 14px;
+    }
+
+    .downloads {
+      margin-bottom: 5rem;
+    }
+
+    .downloads h3 {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .downloads ul {
+      list-style: disc;
+      padding-left: 1.2rem;
+    }
+
+    .downloads li {
+      margin-bottom: 0.5rem;
+    }
+
+    .downloads a {
+      color: #047857;
+      text-decoration: none;
+    }
+
+    .downloads a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      background-color: #047857;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Gram Panchayat Portal</h1>
+    <nav>
+      <a href="/">Logout</a>
+    </nav>
+  </header>
+
+  <!-- Dashboard Content -->
+  <main>
+    <h2>Welcome, User!</h2>
+
+    <!-- Services Grid -->
+    <div class="grid grid-4">
+      <a href="/house-tax" class="card">
+        <h3>🏡 House Tax</h3>
+        <p>Pay your house tax, check status & download receipts.</p>
+      </a>
+
+      <a href="/water-tax" class="card">
+        <h3>🚰 Water Tax</h3>
+        <p>Pay water tax and check consumption history.</p>
+      </a>
+
+      <a href="/other-taxes" class="card">
+        <h3>💰 Other Taxes</h3>
+        <p>Wealth, sanitation & miscellaneous taxes.</p>
+      </a>
+
+      <a href="/electricity-bill" class="card">
+        <h3>⚡ Electricity Bill</h3>
+        <p>Pay EB bill & download transaction records.</p>
+      </a>
+    </div>
+
+    <!-- Info Sections -->
+    <div class="grid grid-2" style="margin-top: 2rem;">
+      <a href="/announcements" class="card">
+        <h3>📢 Grama Sabha Announcements</h3>
+        <p>See upcoming events, meetings & resolutions.</p>
+      </a>
+
+      <a href="/schemes" class="card">
+        <h3>🛠️ Govt. Schemes & Welfare</h3>
+        <p>Apply for PMAY, MGNREGA, pensions & more.</p>
+      </a>
+
+      <a href="/notices" class="card">
+        <h3>📣 Recent Notices</h3>
+        <p>Tax deadlines, public service alerts, health drives.</p>
+      </a>
+
+      <a href="/emergency" class="card">
+        <h3>🚨 Emergency Contacts</h3>
+        <p>Ambulance, Police, Fire Station, Village Nurse.</p>
+      </a>
+    </div>
+
+    <!-- Forms & Downloads -->
+   
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Gram Panchayat Portal. Serving Rural India Digitally.</p>
+  </footer>
+
+</body>
+</html>

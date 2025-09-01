@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>House Tax Payment - Gram Panchayat Portal</title>
+  <style>
+    body {
+      background-color: #f3f4f6;
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #047857;
+      color: white;
+      padding: 16px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    header .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    header a {
+      background-color: white;
+      color: #047857;
+      padding: 8px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+
+    header a:hover {
+      background-color: #f3f4f6;
+    }
+
+    main {
+      max-width: 700px;
+      margin: 40px auto;
+      background-color: white;
+      padding: 32px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    main h2 {
+      font-size: 20px;
+      font-weight: 600;
+      color: #1f2937;
+      margin-bottom: 24px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    label {
+      font-size: 14px;
+      font-weight: 500;
+      color: #374151;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      box-shadow: 1px 1px 2px rgba(0,0,0,0.03);
+      font-size: 14px;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #047857;
+      box-shadow: 0 0 0 2px #bbf7d0;
+    }
+
+    .upi-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .upi-buttons button {
+      padding: 10px 24px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease;
+    }
+
+    .upi-buttons .gpay {
+      background-color: #047857;
+    }
+
+    .upi-buttons .gpay:hover {
+      background-color: #065f46;
+    }
+
+    .upi-buttons .phonepe {
+      background-color: #2563eb;
+    }
+
+    .upi-buttons .phonepe:hover {
+      background-color: #1d4ed8;
+    }
+
+    .upi-buttons .paytm {
+      background-color: #6b21a8;
+    }
+
+    .upi-buttons .paytm:hover {
+      background-color: #581c87;
+    }
+
+    footer {
+      text-align: center;
+      color: #6b7280;
+      font-size: 14px;
+      padding: 24px;
+      margin-top: 80px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <h1>🏠 House Tax Payment</h1>
+      <a href="/dashboard.html">Back to Dashboard</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <h2>Enter Your Property Details</h2>
+
+    <form action="/pay-house-tax" method="POST">
+      <div>
+        <label for="ownerName">Owner Name</label>
+        <input type="text" id="ownerName" name="ownerName" required />
+      </div>
+
+      <div>
+        <label for="propertyId">Property ID / House Number</label>
+        <input type="text" id="propertyId" name="propertyId" required />
+      </div>
+
+      <div>
+        <label for="address">Property Address</label>
+        <textarea id="address" name="address" rows="2" required></textarea>
+      </div>
+
+      <div>
+        <label for="taxAmount">Tax Amount (₹)</label>
+        <input type="number" id="taxAmount" name="taxAmount" required />
+      </div>
+
+      <!-- UPI App Buttons -->
+      <div>
+        <p style="font-size: 14px; font-weight: 500; color: #374151; margin-bottom: 8px;">Pay Using UPI App</p>
+        <div class="upi-buttons">
+          <button type="submit" class="gpay">Pay via Google Pay</button>
+          <button type="submit" class="phonepe">Pay via PhonePe</button>
+          <button type="submit" class="paytm">Pay via Paytm</button>
+        </div>
+      </div>
+    </form>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Gram Panchayat Portal. All rights reserved.
+  </footer>
+
+</body>
+</html>
