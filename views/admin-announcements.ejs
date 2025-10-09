@@ -1,0 +1,89 @@
+<!-- filepath: c:\Users\dilee\Desktop\Sachivalayam_pro\views\admin-announcements.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin - Announcements</title>
+  <style>
+    :root {
+      --google-blue: #4285f4;
+      --google-red: #ea4335;
+      --google-yellow: #fbbc05;
+      --google-green: #34a853;
+      --text-primary: #202124;
+      --text-secondary: #5f6368;
+      --background: #ffffff;
+      --surface: #f8f9fa;
+      --border: #dadce0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body { font-family: 'Roboto', 'Segoe UI', Arial, sans-serif; background: var(--surface); margin: 0; color: var(--text-primary); line-height: 1.5; }
+    .container { max-width: 700px; margin: 3rem auto; background: var(--background); border-radius: 8px; box-shadow: 0 2px 16px rgba(0,0,0,0.07); padding: 2.5rem 2rem; border: 1px solid var(--border); }
+    h1 { color: var(--google-blue); margin-bottom: 2rem; text-align: center; font-size: 2.2rem; font-weight: 700; letter-spacing: 1px; }
+    .announcement { background: var(--surface); border-radius: 6px; padding: 1rem 1.2rem; margin-bottom: 1.2rem; position: relative; }
+    .announcement-title { color: var(--google-green); font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .announcement-date { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0.5rem; }
+    .new-btn { display: block; margin: 2rem auto 1rem auto; background: var(--google-blue); color: #fff; border: none; padding: 0.7rem 2rem; border-radius: 5px; font-weight: 600; cursor: pointer; font-size: 1rem; transition: background 0.2s; letter-spacing: 0.5px; text-decoration: none; text-align: center; }
+    .new-btn:hover { background: #1d4ed8; }
+    .delete-btn {
+      background: var(--google-red);
+      color: #fff;
+      border: none;
+      padding: 0.4rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: background 0.2s;
+      margin-top: 0.7rem;
+      float: right;
+    }
+    .delete-btn:hover {
+      background: #b71c1c;
+    }
+    .edit-btn {
+      background: var(--google-blue);
+      color: #fff;
+      border: none;
+      padding: 0.4rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: background 0.2s;
+      margin-top: 0.7rem;
+      margin-right: 0.5rem;
+      float: right;
+    }
+    .edit-btn:hover {
+      background: #1d4ed8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Announcements</h1>
+    <a href="/admin/announcements/new" class="new-btn">Post New Announcement</a>
+    <% announcements.forEach(a => { %>
+      <div class="announcement">
+        <div class="announcement-title"><%= a.title %></div>
+        <div class="announcement-date"><%= new Date(a.created_at).toLocaleString() %></div>
+        <div><%= a.message %></div>
+        <form action="/admin/announcements/delete/<%= a.id %>" method="POST">
+          <button type="submit" class="delete-btn">Delete</button>
+        </form>       
+         <form action="/admin/announcements/edit/<%= a.id %>" method="GET" style="display:inline;">
+          <button type="submit" class="edit-btn" style="background:#1a3c6e;color:#fff;border:none;padding:0.4rem 1rem;border-radius:4px;cursor:pointer;margin-right:0.5rem;">Edit</button>
+        </form>
+      </div>
+    <% }) %>
+    <% if (announcements.length === 0) { %>
+      <div>No announcements found.</div>
+    <% } %>
+    </div>
+</body>
+</html>

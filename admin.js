@@ -1,18 +1,17 @@
-// admin.js - Admin Panel Routes (HTML version only)
+
 const express = require('express');
 const path = require('path');
 const router = express.Router();
 const db = require('./db');
 
-// Middleware to protect admin routes
 function isAdmin(req, res, next) {
   if (req.session && req.session.isAdmin) {
     return next();
   }
-  res.redirect('/login.html'); // redirect to login if not admin
+  res.redirect('/login.html'); 
 }
 
-// Admin Login Page
+
 router.get('/admin-login', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'adminlogin.html'));
 });
@@ -33,7 +32,6 @@ router.get('/adminpanel', isAdmin, (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'adminpanel.html'));
 });
 
-// Send all users as JSON (to be handled with JS in HTML if needed)
 router.get('/admin/users', isAdmin, (req, res) => {
   const query = 'SELECT id, name, email FROM users';
   db.query(query, (err, users) => {

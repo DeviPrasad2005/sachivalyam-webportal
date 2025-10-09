@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Login - Gram Panchayat Portal</title>
+
+  <style>
+    :root {
+      --google-blue: #4285f4;
+      --google-red: #ea4335;
+      --google-yellow: #fbbc05;
+      --google-green: #34a853;
+      --text-primary: #202124;
+      --text-secondary: #5f6368;
+      --background: #ffffff;
+      --surface: #f8f9fa;
+      --border: #dadce0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(120deg, var(--surface) 0%, #cfdef3 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-primary);
+      line-height: 1.5;
+    }
+    .login-box {
+      background: rgba(255,255,255,0.85);
+      padding: 2.5rem 2rem;
+      border-radius: 1.2rem;
+      box-shadow: 0 8px 32px rgba(66, 133, 244, 0.12), 0 1.5px 8px rgba(66, 133, 244, 0.08);
+      backdrop-filter: blur(6px);
+      border: 1px solid var(--border);
+      width: 100%;
+      max-width: 370px;
+      transition: box-shadow 0.2s;
+    }
+    .login-box:hover {
+      box-shadow: 0 12px 40px rgba(66, 133, 244, 0.18);
+    }
+    h2 {
+      color: var(--google-blue);
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-align: center;
+      text-shadow: 0 2px 8px rgba(66, 133, 244, 0.08);
+    }
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--google-blue);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+    input {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      margin-bottom: 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      font-size: 1rem;
+      transition: border 0.2s, box-shadow 0.2s;
+      box-shadow: 0 1px 4px rgba(66, 133, 244, 0.04);
+    }
+    input:focus {
+      border: 1.5px solid var(--google-blue);
+      outline: none;
+      box-shadow: 0 2px 8px rgba(66, 133, 244, 0.10);
+      background: var(--background);
+    }
+    button {
+      background: linear-gradient(90deg, var(--google-blue) 60%, #1d4ed8 100%);
+      color: #fff;
+      border: none;
+      padding: 0.8rem 2.2rem;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(66, 133, 244, 0.08);
+      transition: background 0.2s, box-shadow 0.2s;
+      margin-top: 0.5rem;
+      letter-spacing: 1px;
+      width: 100%;
+    }
+    button:hover {
+      background: linear-gradient(90deg, #1d4ed8 60%, var(--google-blue) 100%);
+      box-shadow: 0 4px 16px rgba(66, 133, 244, 0.18);
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>Admin Login</h2>
+    <form action="/admin/login" method="POST">
+      <label for="username">Username</label>
+      <input type="text" name="username" id="username" required />
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" required />
+      <button type="submit">Login</button>
+    </form>
+  </div>
+</body>
+</html>

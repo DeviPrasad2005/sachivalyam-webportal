@@ -5,16 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Emergency Contacts</title>
   <style>
-    body {
-      background-color: #f7fafc;
-      color: #1a202c;
-      font-family: Arial, sans-serif;
+    :root {
+      --google-blue: #4285f4;
+      --google-red: #ea4335;
+      --google-yellow: #fbbc05;
+      --google-green: #34a853;
+      --text-primary: #202124;
+      --text-secondary: #5f6368;
+      --background: #ffffff;
+      --surface: #f8f9fa;
+      --border: #dadce0;
+    }
+
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--surface);
+      color: var(--text-primary);
+      font-family: 'Roboto', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.5;
     }
 
     .header {
-      background-color: #1c1c1c;
+      background-color: var(--google-blue);
       color: white;
       padding: 1rem 1.5rem;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -32,17 +51,18 @@
     }
 
     .section {
-      background-color: white;
+      background-color: var(--background);
       border-radius: 1rem;
       padding: 1.5rem;
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      border: 1px solid var(--border);
     }
 
     .section h2 {
       font-size: 1.25rem;
       font-weight: bold;
       margin-bottom: 1.5rem;
-      color: #4a5568;
+      color: var(--text-primary);
     }
 
     .grid {
@@ -56,6 +76,7 @@
       padding: 1rem;
       border-radius: 0.5rem;
       box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      background-color: var(--background);
     }
 
     .card h3 {
@@ -71,22 +92,31 @@
 
     .text-sm {
       font-size: 0.875rem;
-      color: #718096;
+      color: var(--text-secondary);
     }
 
-    .red { background-color: #fef2f2; border-color: #e53e3e; color: #9b2c2c; }
-    .blue { background-color: #ebf8ff; border-color: #3182ce; color: #2b6cb0; }
-    .green { background-color: #f0fff4; border-color: #38a169; color: #2f855a; }
-    .yellow { background-color: #fefcbf; border-color: #d69e2e; color: #b7791f; }
-    .indigo { background-color: #ebf4ff; border-color: #667eea; color: #4c51bf; }
-    .pink { background-color: #fff5f7; border-color: #d53f8c; color: #b83280; }
+    .red { background-color: var(--surface); border-color: var(--google-red); color: var(--google-red); }
+    .blue { background-color: var(--surface); border-color: var(--google-blue); color: var(--google-blue); }
+    .green { background-color: var(--surface); border-color: var(--google-green); color: var(--google-green); }
+    .yellow { background-color: var(--surface); border-color: var(--google-yellow); color: var(--google-yellow); }
+    .indigo { background-color: var(--surface); border-color: var(--google-blue); color: var(--google-blue); }
+    .pink { background-color: var(--surface); border-color: var(--google-red); color: var(--google-red); }
 
     .footer {
-      background-color: #1c1c1c;
-      color: white;
       text-align: center;
       padding: 1rem;
-      margin-top: 13rem;
+      margin-top: auto;
+      color: var(--text-secondary);
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main {
+      flex: 1;
     }
   </style>
 </head>

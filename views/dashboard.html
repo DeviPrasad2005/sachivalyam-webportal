@@ -5,90 +5,146 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>User Dashboard - Gram Panchayat</title>
   <style>
+    :root {
+      --google-blue: #4285f4;
+      --google-red: #ea4335;
+      --google-yellow: #fbbc05;
+      --google-green: #34a853;
+      --text-primary: #202124;
+      --text-secondary: #5f6368;
+      --background: #ffffff;
+      --surface: #f8f9fa;
+      --border: #dadce0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      background-color: #f3f4f6;
-      color: #1f2937;
-      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, var(--surface) 0%, #f3f4f6 100%);
+      color: var(--text-primary);
+      font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
       margin: 0;
       padding: 0;
       min-height: 100vh;
+      line-height: 1.5;
     }
 
     header {
-      background-color: #047857;
+      background: linear-gradient(90deg, var(--google-blue) 60%, #1d4ed8 100%);
       color: white;
-      padding: 1rem 2rem;
+      padding: 1.5rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: sticky;
       top: 0;
       z-index: 50;
+      box-shadow: 0 2px 12px rgba(66, 133, 244, 0.15);
     }
 
     header h1 {
-      font-size: 24px;
-      font-weight: bold;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
 
     header a {
-      color: white;
-      font-size: 14px;
+      color: #fff;
+      font-size: 1rem;
       text-decoration: none;
+      background: var(--google-blue);
+      padding: 0.5rem 1.2rem;
+      border-radius: 8px;
+      transition: background 0.2s;
+      font-weight: 500;
+      box-shadow: 0 2px 8px rgba(66, 133, 244, 0.08);
     }
 
     header a:hover {
+      background: #1d4ed8;
       text-decoration: underline;
     }
 
     main {
       max-width: 1200px;
       margin: auto;
-      padding: 2rem;
+      padding: 2.5rem 1rem 2rem 1rem;
     }
 
     main h2 {
-      color: #047857;
-      font-size: 28px;
-      font-weight: bold;
-      margin-bottom: 2rem;
+      color: var(--google-blue);
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 2.5rem;
+      text-align: center;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 8px rgba(66, 133, 244, 0.08);
     }
 
     .grid {
       display: grid;
-      gap: 1.5rem;
+      gap: 2rem;
     }
 
     .grid-4 {
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      margin-bottom: 2.5rem;
     }
 
     .grid-2 {
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      margin-bottom: 2.5rem;
     }
 
     .card {
-      background-color: white;
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      background: linear-gradient(135deg, var(--background) 70%, var(--surface) 100%);
+      padding: 2rem 1.5rem;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(66, 133, 244, 0.08);
       text-decoration: none;
       color: inherit;
-      transition: box-shadow 0.2s ease-in-out;
+      transition: box-shadow 0.2s, transform 0.2s;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle, rgba(66, 133, 244, 0.2) 60%, transparent 100%);
+      z-index: 0;
     }
 
     .card:hover {
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 8px 32px rgba(66, 133, 244, 0.18);
+      transform: translateY(-4px) scale(1.03);
+      border-color: var(--google-blue);
     }
 
     .card h3 {
-      font-size: 20px;
-      font-weight: bold;
-      margin-bottom: 0.5rem;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.7rem;
+      color: var(--google-blue);
+      z-index: 1;
+      position: relative;
     }
 
     .card p {
-      font-size: 14px;
+      font-size: 1rem;
+      color: var(--text-primary);
+      z-index: 1;
+      position: relative;
     }
 
     .downloads {
@@ -96,9 +152,10 @@
     }
 
     .downloads h3 {
-      font-size: 18px;
+      font-size: 1.1rem;
       font-weight: bold;
       margin-bottom: 1rem;
+      color: var(--google-blue);
     }
 
     .downloads ul {
@@ -111,19 +168,49 @@
     }
 
     .downloads a {
-      color: #047857;
+      color: var(--google-blue);
       text-decoration: none;
+      font-weight: 500;
     }
 
     .downloads a:hover {
       text-decoration: underline;
+      color: #1d4ed8;
     }
+
     footer {
-      background-color: #047857;
-      color: white;
       text-align: center;
-      padding: 1rem;
-      margin-top: 3rem;
+      padding: 1.5rem 0;
+      margin-top: auto;
+      color: var(--text-secondary);
+      font-size: 1rem;
+      letter-spacing: 1px;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    @media (max-width: 700px) {
+      main {
+        padding: 1.2rem 0.2rem;
+      }
+      .grid-4, .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+      .card {
+        padding: 1.2rem 0.8rem;
+      }
+      main h2 {
+        font-size: 1.3rem;
+      }
     }
   </style>
 </head>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Edit Announcement</title>
+  <style>
+    :root {
+      --google-blue: #4285f4;
+      --google-red: #ea4335;
+      --google-yellow: #fbbc05;
+      --google-green: #34a853;
+      --text-primary: #202124;
+      --text-secondary: #5f6368;
+      --background: #ffffff;
+      --surface: #f8f9fa;
+      --border: #dadce0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body { font-family: 'Roboto', 'Segoe UI', Arial, sans-serif; background: var(--surface); margin: 0; color: var(--text-primary); line-height: 1.5; }
+    .container { max-width: 500px; margin: 3rem auto; background: var(--background); border-radius: 8px; box-shadow: 0 2px 16px rgba(0,0,0,0.07); padding: 2.5rem 2rem; border: 1px solid var(--border); }
+    h1 { color: var(--google-blue); margin-bottom: 2rem; text-align: center; font-size: 2rem; font-weight: 700; letter-spacing: 1px; }
+    label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--google-blue); }
+    input, textarea { width: 100%; padding: 0.7rem; margin-bottom: 1.2rem; border-radius: 6px; border: 1px solid var(--border); font-size: 1rem; background: var(--surface); transition: border-color 0.2s; }
+    input:focus, textarea:focus { border-color: var(--google-blue); outline: none; background: var(--background); }
+    button { background: var(--google-blue); color: #fff; border: none; padding: 0.7rem 2rem; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 1rem; transition: background 0.2s; letter-spacing: 0.5px; width: 100%; margin-top: 0.5rem; }
+    button:hover { background: #1d4ed8; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Edit Announcement</h1>
+    <form action="/admin/announcements/edit/<%= announcement.id %>" method="POST">
+      <label for="title">Title</label>
+      <input type="text" name="title" id="title" value="<%= announcement.title %>" required />
+      <label for="message">Message</label>
+      <textarea name="message" id="message" rows="5" required><%= announcement.message %></textarea>
+      <button type="submit">Update Announcement</button>
+    </form>
+  </div>
+</body>
+</html>

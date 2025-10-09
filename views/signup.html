@@ -5,82 +5,103 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sign Up - Gram Panchayat Portal</title>
   <style>
-    body {
+    :root {
+      --google-blue: #4285f4;
+      --google-red: #ea4335;
+      --google-yellow: #fbbc05;
+      --google-green: #34a853;
+      --text-primary: #202124;
+      --text-secondary: #5f6368;
+      --background: #ffffff;
+      --surface: #f8f9fa;
+      --border: #dadce0;
+    }
+
+    * {
       margin: 0;
       padding: 0;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background-image: linear-gradient(rgba(22, 163, 74, 0.85), rgba(22, 163, 74, 0.85)),
-        url('https://images.unsplash.com/photo-1581091870632-dc6b1f3fe7c3?auto=format&fit=crop&w=1950&q=80');
-      background-size: cover;
-      background-position: center;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+      background: var(--background);
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
-      color: #333;
+      padding: 20px;
     }
 
     .signup-container {
-      background-color: #ffffff;
-      padding: 2rem;
-      border-radius: 1rem;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      background: var(--background);
+      padding: 32px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      max-width: 360px;
       width: 100%;
-      max-width: 400px;
     }
 
     .signup-container h2 {
       text-align: center;
-      color: #15803d;
-      margin-bottom: 1.5rem;
+      color: var(--text-primary);
+      font-size: 24px;
+      font-weight: 400;
+      margin-bottom: 24px;
     }
 
     .signup-container label {
       display: block;
-      margin-bottom: 0.5rem;
-      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: var(--text-primary);
+      font-weight: 500;
     }
 
     .signup-container input {
       width: 100%;
-      padding: 10px 12px;
-      margin-bottom: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
       outline: none;
-      transition: border-color 0.3s ease;
+      font-size: 16px;
+      transition: border-color 0.2s;
     }
 
     .signup-container input:focus {
-      border-color: #15803d;
-      box-shadow: 0 0 0 2px rgba(21, 128, 61, 0.2);
+      border-color: var(--google-blue);
     }
 
     .signup-container button {
       width: 100%;
-      background-color: #15803d;
-      color: #fff;
-      font-weight: 600;
-      padding: 10px;
+      background: var(--google-blue);
+      color: white;
+      font-weight: 500;
+      padding: 12px 16px;
       border: none;
-      border-radius: 8px;
+      border-radius: 4px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      font-size: 14px;
+      transition: box-shadow 0.2s;
+      margin-top: 8px;
     }
 
     .signup-container button:hover {
-      background-color: #166534;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
 
     .signup-container p {
       text-align: center;
-      font-size: 0.9rem;
-      margin-top: 1rem;
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-top: 20px;
     }
 
     .signup-container a {
-      color: #15803d;
-      font-weight: 600;
+      color: var(--google-blue);
+      font-weight: 500;
       text-decoration: none;
     }
 
