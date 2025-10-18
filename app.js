@@ -11,10 +11,13 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(session({
-  secret: 'gram-panchayat-secret',
+  secret: process.env.SESSION_SECRET || 'gram-panchayat-secret',
   resave: false,
   saveUninitialized: true,
-  cookie: { maxAge: 24 * 60 * 60 * 1000 } // 1 day in milliseconds
+  cookie: {
+    maxAge: 24 * 60 * 60 * 1000, // 24 hours
+    secure: process.env.NODE_ENV === 'production'
+  }
 }));
 
 // Serve static files

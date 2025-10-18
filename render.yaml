@@ -1,0 +1,39 @@
+services:
+  - type: web
+    name: gram-panchayat-portal
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: DB_HOST
+        fromService:
+          type: pserv
+          name: gram-db
+          property: host
+      - key: DB_USER
+        fromService:
+          type: pserv
+          name: gram-db
+          property: user
+      - key: DB_PASSWORD
+        fromService:
+          type: pserv
+          name: gram-db
+          property: password
+      - key: DB_NAME
+        fromService:
+          type: pserv
+          name: gram-db
+          property: database
+  - type: pserv
+    name: gram-db
+    env: mysql
+    plan: starter
+    disk:
+      name: gram-db-disk
+      mountPath: /var/lib/mysql
+      sizeGB: 10
