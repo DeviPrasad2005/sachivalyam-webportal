@@ -3,18 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Emergency Contacts</title>
+  <title>Emergency Contacts - Gram Panchayat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --google-blue: #4285f4;
-      --google-red: #ea4335;
-      --google-yellow: #fbbc05;
-      --google-green: #34a853;
-      --text-primary: #202124;
-      --text-secondary: #5f6368;
-      --background: #ffffff;
-      --surface: #f8f9fa;
-      --border: #dadce0;
+      --primary: #2563eb;
+      --primary-dark: #1e40af;
+      --primary-light: #3b82f6;
+      --accent: #10b981;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --background: #f8fafc;
+      --surface: #ffffff;
+      --border: #e2e8f0;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     }
 
     * {
@@ -24,160 +33,355 @@
     }
 
     body {
-      background-color: var(--surface);
-      color: var(--text-primary);
-      font-family: 'Roboto', Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      line-height: 1.5;
-    }
-
-    .header {
-      background-color: var(--google-blue);
-      color: white;
-      padding: 1rem 1.5rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    .header h1 {
-      font-size: 1.75rem;
-      margin: 0;
-    }
-
-    .main {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem;
-    }
-
-    .section {
-      background-color: var(--background);
-      border-radius: 1rem;
-      padding: 1.5rem;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      border: 1px solid var(--border);
-    }
-
-    .section h2 {
-      font-size: 1.25rem;
-      font-weight: bold;
-      margin-bottom: 1.5rem;
-      color: var(--text-primary);
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .card {
-      border-left: 4px solid;
-      padding: 1rem;
-      border-radius: 0.5rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-      background-color: var(--background);
-    }
-
-    .card h3 {
-      font-size: 1.125rem;
-      font-weight: 600;
-      margin: 0 0 0.5rem 0;
-    }
-
-    .card p {
-      margin: 0.25rem 0;
-      font-size: 0.95rem;
-    }
-
-    .text-sm {
-      font-size: 0.875rem;
-      color: var(--text-secondary);
-    }
-
-    .red { background-color: var(--surface); border-color: var(--google-red); color: var(--google-red); }
-    .blue { background-color: var(--surface); border-color: var(--google-blue); color: var(--google-blue); }
-    .green { background-color: var(--surface); border-color: var(--google-green); color: var(--google-green); }
-    .yellow { background-color: var(--surface); border-color: var(--google-yellow); color: var(--google-yellow); }
-    .indigo { background-color: var(--surface); border-color: var(--google-blue); color: var(--google-blue); }
-    .pink { background-color: var(--surface); border-color: var(--google-red); color: var(--google-red); }
-
-    .footer {
-      text-align: center;
-      padding: 1rem;
-      margin-top: auto;
-      color: var(--text-secondary);
-    }
-
-    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--background);
       min-height: 100vh;
+      color: var(--text-primary);
+      line-height: 1.6;
       display: flex;
       flex-direction: column;
     }
 
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 800;
+      color: var(--danger);
+      text-decoration: none;
+    }
+
+    .logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--danger), #dc2626);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow);
+      font-weight: 700;
+      font-size: 1.25rem;
+    }
+
+    .back-link {
+      text-decoration: none;
+      color: white;
+      background: var(--primary);
+      padding: 0.625rem 1.25rem;
+      border-radius: 10px;
+      font-weight: 600;
+      box-shadow: var(--shadow);
+      transition: all 0.2s ease;
+    }
+
+    .back-link:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .hero {
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.05), rgba(245, 158, 11, 0.05));
+      padding: 3rem 2rem 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+      color: var(--danger);
+    }
+
+    .hero p {
+      color: var(--text-secondary);
+      font-size: clamp(0.9375rem, 2vw, 1.125rem);
+    }
+
     main {
       flex: 1;
+      padding: 3rem 2rem;
     }
+
+    .main-container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      color: var(--text-primary);
+    }
+
+    .emergency-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .emergency-card {
+      background: var(--surface);
+      padding: 2rem;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .emergency-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+    }
+
+    .emergency-card.red::before { background: var(--danger); }
+    .emergency-card.blue::before { background: var(--primary); }
+    .emergency-card.green::before { background: var(--accent); }
+    .emergency-card.yellow::before { background: var(--warning); }
+    .emergency-card.purple::before { background: #8b5cf6; }
+    .emergency-card.orange::before { background: #f97316; }
+
+    .emergency-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .emergency-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .emergency-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .emergency-number {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .emergency-number strong {
+      font-size: 1.5rem;
+      color: var(--text-primary);
+      font-weight: 800;
+    }
+
+    .emergency-card p {
+      color: var(--text-secondary);
+      font-size: 0.9375rem;
+      line-height: 1.6;
+    }
+
+    .availability {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--accent);
+      border-radius: 20px;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-muted);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.875rem;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+
+      .hero {
+        padding: 2rem 1rem 1.5rem;
+      }
+
+      main {
+        padding: 2rem 1rem;
+      }
+
+      .emergency-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .emergency-card {
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    .emergency-card:nth-child(1) { animation-delay: 0.1s; }
+    .emergency-card:nth-child(2) { animation-delay: 0.2s; }
+    .emergency-card:nth-child(3) { animation-delay: 0.3s; }
+    .emergency-card:nth-child(4) { animation-delay: 0.4s; }
+    .emergency-card:nth-child(5) { animation-delay: 0.5s; }
+    .emergency-card:nth-child(6) { animation-delay: 0.6s; }
   </style>
 </head>
 <body>
-
   <!-- Header -->
-  <header class="header">
-    <h1>Emergency Contacts</h1>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo">🚨</div>
+        <span>Emergency Contacts</span>
+      </div>
+      <nav>
+        <a class="back-link" href="/dashboard">Back to Dashboard</a>
+      </nav>
+    </div>
   </header>
 
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <h1>🚨 Emergency Contacts</h1>
+      <p>Quick access to essential emergency services - Available 24/7</p>
+    </div>
+  </section>
+
   <!-- Main Content -->
-  <main class="main">
-    <section class="section">
-      <h2>Important Emergency Numbers</h2>
+  <main>
+    <div class="main-container">
+      <h2 class="section-title">Important Emergency Numbers</h2>
 
-      <div class="grid">
-
-        <div class="card red">
+      <div class="emergency-grid">
+        <!-- Police -->
+        <div class="emergency-card red">
+          <div class="emergency-icon">👮</div>
           <h3>Police</h3>
-          <p>Dial: <strong>100</strong></p>
-          <p class="text-sm">Available 24x7</p>
+          <div class="emergency-number">
+            <span>📞</span>
+            <strong>100</strong>
+          </div>
+          <p>For law and order emergencies, crimes, accidents, and immediate police assistance.</p>
+          <span class="availability">Available 24x7</span>
         </div>
 
-        <div class="card blue">
+        <!-- Fire Department -->
+        <div class="emergency-card orange">
+          <div class="emergency-icon">🚒</div>
           <h3>Fire Department</h3>
-          <p>Dial: <strong>101</strong></p>
-          <p class="text-sm">Immediate fire emergencies</p>
+          <div class="emergency-number">
+            <span>📞</span>
+            <strong>101</strong>
+          </div>
+          <p>Immediate response for fire emergencies, building fires, and rescue operations.</p>
+          <span class="availability">Available 24x7</span>
         </div>
 
-        <div class="card green">
+        <!-- Ambulance -->
+        <div class="emergency-card green">
+          <div class="emergency-icon">🚑</div>
           <h3>Ambulance</h3>
-          <p>Dial: <strong>102</strong></p>
-          <p class="text-sm">Health and medical emergencies</p>
+          <div class="emergency-number">
+            <span>📞</span>
+            <strong>102</strong>
+          </div>
+          <p>Medical emergencies, health crises, and immediate ambulance services.</p>
+          <span class="availability">Available 24x7</span>
         </div>
 
-        <div class="card yellow">
+        <!-- Disaster Management -->
+        <div class="emergency-card yellow">
+          <div class="emergency-icon">⚠️</div>
           <h3>Disaster Management</h3>
-          <p>Dial: <strong>108</strong></p>
-          <p class="text-sm">Floods, storms, rescue operations</p>
+          <div class="emergency-number">
+            <span>📞</span>
+            <strong>108</strong>
+          </div>
+          <p>Natural disasters, floods, storms, earthquakes, and rescue operations.</p>
+          <span class="availability">Available 24x7</span>
         </div>
 
-        <div class="card indigo">
+        <!-- Panchayat Office -->
+        <div class="emergency-card blue">
+          <div class="emergency-icon">🏛️</div>
           <h3>Grama Sachivalayam Office</h3>
-          <p>Phone: <strong>0891-XXX-XXXX</strong></p>
-          <p class="text-sm">For local complaints & support</p>
+          <div class="emergency-number">
+            <span>📞</span>
+            <strong>0891-XXX-XXXX</strong>
+          </div>
+          <p>Local complaints, village issues, administrative support, and general assistance.</p>
+          <span class="availability">Office Hours: 10 AM - 5 PM</span>
         </div>
 
-        <div class="card pink">
+        <!-- Electricity Emergency -->
+        <div class="emergency-card purple">
+          <div class="emergency-icon">⚡</div>
           <h3>Electricity Emergency</h3>
-          <p>Dial: <strong>1912</strong></p>
-          <p class="text-sm">Power outages & breakdowns</p>
+          <div class="emergency-number">
+            <span>📞</span>
+            <strong>1912</strong>
+          </div>
+          <p>Power outages, electrical breakdowns, transformer issues, and line faults.</p>
+          <span class="availability">Available 24x7</span>
         </div>
-
       </div>
-    </section>
+    </div>
   </main>
 
   <!-- Footer -->
-  <footer class="footer">
-    &copy; 2025 Grama Sachivalayam. All Rights Reserved.
+  <footer>
+    &copy; 2025 Gram Panchayat Portal. Serving Rural India Digitally.
   </footer>
-
 </body>
 </html>

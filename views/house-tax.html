@@ -4,221 +4,455 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>House Tax Payment - Gram Panchayat Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --google-blue: #4285f4;
-      --google-red: #ea4335;
-      --google-yellow: #fbbc05;
-      --google-green: #34a853;
-      --text-primary: #202124;
-      --text-secondary: #5f6368;
-      --background: #ffffff;
-      --surface: #f8f9fa;
-      --border: #dadce0;
+      --primary: #2563eb;
+      --primary-dark: #1e40af;
+      --primary-light: #3b82f6;
+      --accent: #10b981;
+      --accent-dark: #059669;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --background: #f8fafc;
+      --surface: #ffffff;
+      --border: #e2e8f0;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
     }
 
-    * {
-      margin: 0;
-      padding: 0;
+    * { 
       box-sizing: border-box;
-    }
-
-    body {
-      background-color: var(--surface);
-      font-family: 'Roboto', Arial, sans-serif;
       margin: 0;
       padding: 0;
-      color: var(--text-primary);
-      line-height: 1.5;
     }
 
-    header {
-      background-color: var(--google-green);
-      color: white;
-      padding: 16px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    header .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    header h1 {
-      font-size: 24px;
-      font-weight: bold;
-      margin: 0;
-    }
-
-    header a {
-      background-color: var(--background);
-      color: var(--google-green);
-      padding: 8px 16px;
-      border-radius: 6px;
-      text-decoration: none;
-      transition: background-color 0.3s ease;
-    }
-
-    header a:hover {
-      background-color: var(--surface);
-    }
-
-    main {
-      max-width: 700px;
-      margin: 40px auto;
-      background-color: var(--background);
-      padding: 32px;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
-    }
-
-    main h2 {
-      font-size: 20px;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 24px;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-
-    label {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text-primary);
-      margin-bottom: 6px;
-      display: block;
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 10px 12px;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      box-shadow: 1px 1px 2px rgba(0,0,0,0.03);
-      font-size: 14px;
-      background-color: var(--background);
-      color: var(--text-primary);
-    }
-
-    input:focus, textarea:focus {
-      outline: none;
-      border-color: var(--google-green);
-      box-shadow: 0 0 0 2px #bbf7d0;
-    }
-
-    .upi-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .upi-buttons button {
-      padding: 10px 24px;
-      border: none;
-      border-radius: 6px;
-      font-size: 14px;
-      font-weight: 500;
-      color: white;
-      cursor: pointer;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      transition: background-color 0.3s ease;
-    }
-
-    .upi-buttons .gpay {
-      background-color: var(--google-green);
-    }
-
-    .upi-buttons .gpay:hover {
-      background-color: #065f46;
-    }
-
-    .upi-buttons .phonepe {
-      background-color: var(--google-blue);
-    }
-
-    .upi-buttons .phonepe:hover {
-      background-color: #1d4ed8;
-    }
-
-    .upi-buttons .paytm {
-      background-color: #6b21a8;
-    }
-
-    .upi-buttons .paytm:hover {
-      background-color: #581c87;
-    }
-
-    footer {
-      text-align: center;
-      color: var(--text-secondary);
-      font-size: 14px;
-      padding: 24px;
-      margin-top: auto;
+    html, body { 
+      height: 100%; 
     }
 
     body {
-      min-height: 100vh;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: var(--background);
       display: flex;
       flex-direction: column;
     }
 
-    main {
-      flex: 1;
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: white;
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .container { 
+      max-width: 1280px; 
+      margin: 0 auto; 
+      padding: 1rem 2rem; 
+    }
+
+    .nav { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      gap: 1rem; 
+    }
+
+    .brand { 
+      display: flex; 
+      align-items: center; 
+      gap: 0.75rem; 
+      font-weight: 800; 
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .logo { 
+      width: 40px; 
+      height: 40px; 
+      border-radius: 10px; 
+      background: linear-gradient(135deg, var(--primary), var(--primary-light)); 
+      color: white; 
+      display: flex;
+      align-items: center;
+      justify-content: center; 
+      box-shadow: var(--shadow); 
+      font-weight: 700;
+      font-size: 1.25rem;
+    }
+
+    .back-link { 
+      text-decoration: none; 
+      color: white; 
+      background: var(--primary); 
+      padding: 0.625rem 1.25rem; 
+      border-radius: 10px; 
+      font-weight: 600; 
+      font-size: 0.9375rem;
+      box-shadow: var(--shadow); 
+      transition: all 0.2s ease; 
+    }
+
+    .back-link:hover { 
+      background: var(--primary-dark); 
+      transform: translateY(-1px); 
+      box-shadow: var(--shadow-lg); 
+    }
+
+    /* Hero */
+    .hero { 
+      padding: 2.5rem 2rem 1.5rem; 
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), rgba(16, 185, 129, 0.05));
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero h1 { 
+      max-width: 1280px; 
+      margin: 0 auto; 
+      font-size: clamp(1.75rem, 4vw, 2.25rem); 
+      font-weight: 800; 
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero p { 
+      max-width: 1280px; 
+      margin: 0 auto; 
+      color: var(--text-secondary); 
+      font-size: clamp(0.9375rem, 2vw, 1.0625rem); 
+    }
+
+    /* Main Content */
+    main { 
+      flex: 1; 
+      padding: 2.5rem 2rem 3rem; 
+    }
+
+    .form-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .card { 
+      background: var(--surface); 
+      border: 1px solid var(--border); 
+      border-radius: 16px; 
+      padding: 2rem; 
+      box-shadow: var(--shadow-lg);
+      margin-bottom: 1.5rem;
+    }
+
+    .card h2 { 
+      margin: 0 0 0.5rem 0; 
+      font-size: 1.5rem; 
+      font-weight: 800; 
+      color: var(--primary);
+      letter-spacing: -0.01em;
+    }
+
+    .card p.sub { 
+      margin: 0 0 2rem 0; 
+      color: var(--text-secondary); 
+      font-size: 0.9375rem; 
+    }
+
+    /* Form Styles */
+    form { 
+      display: grid; 
+      gap: 1.5rem; 
+    }
+
+    .field { 
+      display: grid; 
+      gap: 0.5rem; 
+    }
+
+    label { 
+      font-size: 0.875rem; 
+      font-weight: 600; 
+      color: var(--text-primary); 
+    }
+
+    input, textarea { 
+      width: 100%; 
+      padding: 0.875rem 1rem; 
+      border: 2px solid var(--border); 
+      border-radius: 10px; 
+      background: var(--surface); 
+      font-size: 1rem; 
+      color: var(--text-primary); 
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    textarea { 
+      min-height: 100px; 
+      resize: vertical; 
+    }
+
+    input:focus, textarea:focus { 
+      outline: none; 
+      border-color: var(--primary); 
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: #94a3b8;
+    }
+
+    .grid-2 { 
+      display: grid; 
+      grid-template-columns: 1fr 1fr; 
+      gap: 1.5rem; 
+    }
+
+    .hint { 
+      font-size: 0.8125rem; 
+      color: var(--text-muted); 
+      margin-top: -0.25rem; 
+    }
+
+    /* UPI Info Box */
+    .upi-box { 
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.05));
+      border-left: 4px solid var(--accent); 
+      padding: 1.25rem 1.5rem; 
+      border-radius: 12px;
+      margin-top: 0.5rem;
+    }
+
+    .upi-box p { 
+      margin: 0 0 0.75rem 0; 
+      font-size: 0.9375rem; 
+      font-weight: 700; 
+      color: var(--accent-dark);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .upi-box ul { 
+      margin: 0; 
+      padding-left: 1.25rem; 
+      color: var(--text-secondary); 
+      font-size: 0.875rem;
+      line-height: 1.7;
+    }
+
+    .upi-box li {
+      margin-bottom: 0.5rem;
+    }
+
+    .upi-box strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    /* Buttons */
+    .actions { 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: 1rem; 
+      margin-top: 0.5rem; 
+    }
+
+    .btn-primary { 
+      border: none; 
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white; 
+      font-weight: 700; 
+      padding: 1rem 2rem; 
+      border-radius: 10px; 
+      cursor: pointer; 
+      font-size: 1rem;
+      box-shadow: var(--shadow); 
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .btn-primary:hover { 
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      transform: translateY(-2px); 
+      box-shadow: var(--shadow-lg); 
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    /* Footer */
+    footer { 
+      border-top: 1px solid var(--border); 
+      background: var(--surface); 
+      color: var(--text-muted); 
+      text-align: center; 
+      padding: 2rem; 
+      font-size: 0.875rem; 
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+
+      .hero {
+        padding: 2rem 1rem 1.5rem;
+      }
+
+      main {
+        padding: 2rem 1rem;
+      }
+
+      .card {
+        padding: 1.5rem;
+      }
+
+      .grid-2 { 
+        grid-template-columns: 1fr; 
+      }
+
+      .brand span {
+        display: none;
+      }
+
+      .back-link {
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 1.25rem;
+      }
+
+      .btn-primary {
+        width: 100%;
+      }
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card {
+      animation: fadeIn 0.5s ease-out;
     }
   </style>
 </head>
 <body>
-
   <!-- Header -->
   <header>
-    <div class="container">
-      <h1>🏠 House Tax Payment</h1>
-      <a href="/dashboard.html">Back to Dashboard</a>
+    <div class="container nav">
+      <a href="/dashboard" class="brand" aria-label="Gram Panchayat Portal">
+        <div class="logo" aria-hidden="true">GP</div>
+        <span>Gram Panchayat</span>
+      </a>
+      <nav>
+        <a class="back-link" href="/dashboard" title="Back to Dashboard">← Back</a>
+      </nav>
     </div>
   </header>
 
-  <!-- Main Content -->
+  <!-- Hero -->
+  <section class="hero">
+    <h1>House Tax Payment</h1>
+    <p>Enter your property details and the payable amount. Ensure UPI payment is done before submission.</p>
+  </section>
+
+  <!-- Main -->
   <main>
-    <h2>Enter Your Property Details</h2>
+    <div class="form-container">
+      <div class="card" role="region" aria-labelledby="form-title">
+        <h2 id="form-title">Enter Your Property Details</h2>
+        <p class="sub">All fields are required</p>
 
-    <form action="/pay-house-tax" method="POST">
-      <div>
-        <label for="ownerName">Owner Name</label>
-        <input type="text" id="ownerName" name="ownerName" required />
-      </div>
+        <form action="/pay-house-tax" method="POST">
+          <div class="field">
+            <label for="ownerName">Owner Name</label>
+            <input 
+              type="text" 
+              id="ownerName" 
+              name="ownerName" 
+              placeholder="Enter property owner's full name"
+              required 
+              autocomplete="name" 
+            />
+          </div>
 
-      <div>
-        <label for="propertyId">Property ID / House Number</label>
-        <input type="text" id="propertyId" name="propertyId" required />
-      </div>
+          <div class="grid-2">
+            <div class="field">
+              <label for="propertyId">Property ID / House Number</label>
+              <input
+                type="text"
+                id="propertyId"
+                name="propertyId"
+                placeholder="e.g., H-123"
+                required
+              />
+            </div>
+            <div class="field">
+              <label for="taxAmount">Tax Amount (₹)</label>
+              <input
+                type="number"
+                id="taxAmount"
+                name="taxAmount"
+                placeholder="Loading..."
+                min="0"
+                step="0.01"
+                readonly
+                required
+              />
+              <div class="hint">Amount set by admin</div>
+            </div>
+          </div>
 
-      <div>
-        <label for="address">Property Address</label>
-        <textarea id="address" name="address" rows="2" required></textarea>
-      </div>
+          <div class="field">
+            <label for="address">Property Address</label>
+            <textarea 
+              id="address" 
+              name="address" 
+              rows="3" 
+              placeholder="Enter complete property address"
+              required
+            ></textarea>
+            <div class="hint">Include street, area, and village/town name.</div>
+          </div>
 
-      <div>
-        <label for="taxAmount">Tax Amount (₹)</label>
-        <input type="number" id="taxAmount" name="taxAmount" required />
-      </div>
+          <div class="upi-box" aria-live="polite">
+            <p>💡 UPI Payment Instructions</p>
+            <ul>
+              <li>Make your payment via UPI to <strong>gphouse@upi</strong> or scan the official QR code.</li>
+              <li>After successful payment, submit this form to record your transaction.</li>
+              <li>Keep your UPI transaction ID for reference.</li>
+            </ul>
+          </div>
 
-      <!-- UPI App Buttons -->
-      <div>
-        <p style="font-size: 14px; font-weight: 500; color: #374151; margin-bottom: 8px;">Pay Using UPI App</p>
-        <div class="upi-buttons">
-          <button type="submit" class="gpay">Pay via Google Pay</button>
-          <button type="submit" class="phonepe">Pay via PhonePe</button>
-          <button type="submit" class="paytm">Pay via Paytm</button>
-        </div>
+          <div class="actions">
+            <button type="submit" class="btn-primary">Submit Payment</button>
+          </div>
+        </form>
       </div>
-    </form>
+    </div>
   </main>
 
   <!-- Footer -->
@@ -226,5 +460,22 @@
     &copy; 2025 Gram Panchayat Portal. All rights reserved.
   </footer>
 
+  <script>
+    // Fetch tax amount from admin settings
+    async function loadTaxAmount() {
+      try {
+        const response = await fetch('/api/user-tax-amounts/house');
+        const data = await response.json();
+        document.getElementById('taxAmount').value = data.amount;
+        document.getElementById('taxAmount').placeholder = data.amount > 0 ? '' : 'No amount set';
+      } catch (error) {
+        console.error('Error loading tax amount:', error);
+        document.getElementById('taxAmount').placeholder = 'Error loading amount';
+      }
+    }
+
+    // Load tax amount when page loads
+    document.addEventListener('DOMContentLoaded', loadTaxAmount);
+  </script>
 </body>
 </html>

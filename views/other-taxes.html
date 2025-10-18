@@ -3,158 +3,483 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Other Tax Payment - Gram Panchayat</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>Other Taxes Payment - Gram Panchayat Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --google-blue: #4285f4;
-      --google-red: #ea4335;
-      --google-yellow: #fbbc05;
-      --google-green: #34a853;
-      --text-primary: #202124;
-      --text-secondary: #5f6368;
-      --background: #ffffff;
-      --surface: #f8f9fa;
-      --border: #dadce0;
+      --primary: #2563eb;
+      --primary-dark: #1e40af;
+      --primary-light: #3b82f6;
+      --accent: #10b981;
+      --accent-dark: #059669;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --background: #f8fafc;
+      --surface: #ffffff;
+      --border: #e2e8f0;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
     }
-    * {
+
+    * { 
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
+
+    html, body { 
+      height: 100%; 
+    }
+
     body {
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(to bottom right, #eff6ff, #f1f5f9);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
       color: var(--text-primary);
-      line-height: 1.5;
-    }
-    .container {
       background: var(--background);
-      border-radius: 1.5rem;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-      padding: 2rem;
-      max-width: 42rem;
-      width: 100%;
-      border: 1px solid var(--border);
-    }
-    .header {
-      margin-bottom: 1.5rem;
-      text-align: center;
-    }
-    .header h1 {
-      font-size: 1.875rem;
-      font-weight: 700;
-      color: var(--google-blue);
-      margin-bottom: 0.5rem;
-    }
-    .header p {
-      color: var(--text-secondary);
-      font-size: 0.875rem;
-    }
-    form {
       display: flex;
       flex-direction: column;
-      gap: 1.25rem;
     }
-    label {
-      display: block;
-      color: var(--text-primary);
-      font-weight: 500;
-      margin-bottom: 0.25rem;
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: white;
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
     }
-    input, select {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      border: 1px solid var(--border);
-      border-radius: 0.75rem;
-      transition: border-color 0.3s, box-shadow 0.3s;
-      font-size: 1rem;
-      background-color: var(--background);
-      color: var(--text-primary);
+
+    .container { 
+      max-width: 1280px; 
+      margin: 0 auto; 
+      padding: 1rem 2rem; 
     }
-    input:focus, select:focus {
-      border-color: var(--google-blue);
-      outline: none;
-      box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.2);
+
+    .nav { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      gap: 1rem; 
     }
-    .submit-button {
-      background-color: var(--google-blue);
-      color: white;
-      font-weight: 600;
-      padding: 0.75rem 1.5rem;
-      border: none;
-      border-radius: 0.75rem;
-      cursor: pointer;
-      transition: background-color 0.3s, transform 0.2s;
-      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+
+    .brand { 
+      display: flex; 
+      align-items: center; 
+      gap: 0.75rem; 
+      font-weight: 800; 
+      color: var(--primary);
+      text-decoration: none;
     }
-    .submit-button:hover {
-      background-color: #1d4ed8;
-      transform: translateY(-1px);
+
+    .logo { 
+      width: 40px; 
+      height: 40px; 
+      border-radius: 10px; 
+      background: linear-gradient(135deg, var(--primary), var(--primary-light)); 
+      color: white; 
+      display: flex;
+      align-items: center;
+      justify-content: center; 
+      box-shadow: var(--shadow); 
+      font-weight: 700;
+      font-size: 1.25rem;
     }
-    .info {
-      margin-top: 1.5rem;
-      text-align: center;
+
+    .back-link { 
+      text-decoration: none; 
+      color: white; 
+      background: var(--primary); 
+      padding: 0.625rem 1.25rem; 
+      border-radius: 10px; 
+      font-weight: 600; 
+      font-size: 0.9375rem;
+      box-shadow: var(--shadow); 
+      transition: all 0.2s ease; 
+    }
+
+    .back-link:hover { 
+      background: var(--primary-dark); 
+      transform: translateY(-1px); 
+      box-shadow: var(--shadow-lg); 
+    }
+
+    .hero { 
+      padding: 2.5rem 2rem 1.5rem; 
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), rgba(16, 185, 129, 0.05));
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero h1 { 
+      max-width: 1280px; 
+      margin: 0 auto; 
+      font-size: clamp(1.75rem, 4vw, 2.25rem); 
+      font-weight: 800; 
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero p { 
+      max-width: 1280px; 
+      margin: 0 auto; 
+      color: var(--text-secondary); 
+      font-size: clamp(0.9375rem, 2vw, 1.0625rem); 
+    }
+
+    main { 
+      flex: 1; 
+      padding: 2.5rem 2rem 3rem; 
+    }
+
+    .form-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .card { 
+      background: var(--surface); 
+      border: 1px solid var(--border); 
+      border-radius: 16px; 
+      padding: 2rem; 
+      box-shadow: var(--shadow-lg);
+      margin-bottom: 1.5rem;
+    }
+
+    .card h2 { 
+      margin: 0 0 0.5rem 0; 
+      font-size: 1.5rem; 
+      font-weight: 800; 
+      color: var(--primary);
+      letter-spacing: -0.01em;
+    }
+
+    .card p.sub { 
+      margin: 0 0 2rem 0; 
+      color: var(--text-secondary); 
+      font-size: 0.9375rem; 
+    }
+
+    form { 
+      display: grid; 
+      gap: 1.5rem; 
+    }
+
+    .field { 
+      display: grid; 
+      gap: 0.5rem; 
+    }
+
+    label { 
+      font-size: 0.875rem; 
+      font-weight: 600; 
+      color: var(--text-primary); 
+    }
+
+    input, select, textarea { 
+      width: 100%; 
+      padding: 0.875rem 1rem; 
+      border: 2px solid var(--border); 
+      border-radius: 10px; 
+      background: var(--surface); 
+      font-size: 1rem; 
+      color: var(--text-primary); 
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    input:focus, select:focus, textarea:focus { 
+      outline: none; 
+      border-color: var(--primary); 
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: #94a3b8;
+    }
+
+    .grid-2 { 
+      display: grid; 
+      grid-template-columns: 1fr 1fr; 
+      gap: 1.5rem; 
+    }
+
+    .hint { 
+      font-size: 0.8125rem; 
+      color: var(--text-muted); 
+      margin-top: -0.25rem; 
+    }
+
+    .upi-box { 
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.05));
+      border-left: 4px solid var(--accent); 
+      padding: 1.25rem 1.5rem; 
+      border-radius: 12px;
+      margin-top: 0.5rem;
+    }
+
+    .upi-box p { 
+      margin: 0 0 0.75rem 0; 
+      font-size: 0.9375rem; 
+      font-weight: 700; 
+      color: var(--accent-dark);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .upi-box ul { 
+      margin: 0; 
+      padding-left: 1.25rem; 
+      color: var(--text-secondary); 
       font-size: 0.875rem;
-      color: var(--text-secondary);
+      line-height: 1.7;
     }
-    .info strong {
+
+    .upi-box li {
+      margin-bottom: 0.5rem;
+    }
+
+    .upi-box strong {
+      color: var(--text-primary);
       font-weight: 600;
+    }
+
+    .actions { 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: 1rem; 
+      margin-top: 0.5rem; 
+    }
+
+    .btn-primary { 
+      border: none; 
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white; 
+      font-weight: 700; 
+      padding: 1rem 2rem; 
+      border-radius: 10px; 
+      cursor: pointer; 
+      font-size: 1rem;
+      box-shadow: var(--shadow); 
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .btn-primary:hover { 
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      transform: translateY(-2px); 
+      box-shadow: var(--shadow-lg); 
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    footer { 
+      border-top: 1px solid var(--border); 
+      background: var(--surface); 
+      color: var(--text-muted); 
+      text-align: center; 
+      padding: 2rem; 
+      font-size: 0.875rem; 
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+
+      .hero {
+        padding: 2rem 1rem 1.5rem;
+      }
+
+      main {
+        padding: 2rem 1rem;
+      }
+
+      .card {
+        padding: 1.5rem;
+      }
+
+      .grid-2 { 
+        grid-template-columns: 1fr; 
+      }
+
+      .brand span {
+        display: none;
+      }
+
+      .back-link {
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 1.25rem;
+      }
+
+      .btn-primary {
+        width: 100%;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card {
+      animation: fadeIn 0.5s ease-out;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <h1>Other Tax Payment</h1>
-      <p>Pay your professional, trade license, or vacant land tax easily</p>
+  <header>
+    <div class="container nav">
+      <a href="/dashboard" class="brand" aria-label="Gram Panchayat Portal">
+        <div class="logo" aria-hidden="true">GP</div>
+        <span>Gram Panchayat</span>
+      </a>
+      <nav>
+        <a class="back-link" href="/dashboard" title="Back to Dashboard">← Back</a>
+      </nav>
     </div>
+  </header>
 
-    <form action="/pay-other-tax" method="POST">
-      <div>
-        <label for="taxpayerName">Full Name</label>
-        <input type="text" id="taxpayerName" name="taxpayerName" required placeholder="Enter your full name" />
+  <section class="hero">
+    <h1>Other Taxes Payment</h1>
+    <p>Pay wealth tax, sanitation tax, and other miscellaneous taxes securely.</p>
+  </section>
+
+  <main>
+    <div class="form-container">
+      <div class="card" role="region" aria-labelledby="form-title">
+        <h2 id="form-title">Pay Other Taxes</h2>
+        <p class="sub">All fields are required</p>
+
+        <form action="/pay-other-taxes" method="POST">
+          <div class="field">
+            <label for="ownerName">Owner Name</label>
+            <input 
+              type="text" 
+              id="ownerName" 
+              name="ownerName" 
+              placeholder="Enter your full name"
+              required 
+              autocomplete="name"
+            />
+          </div>
+
+          <div class="field">
+            <label for="taxType">Tax Type</label>
+            <select id="taxType" name="taxType" required>
+              <option value="">Select tax type</option>
+              <option value="wealth">Wealth Tax</option>
+              <option value="sanitation">Sanitation Tax</option>
+              <option value="trade">Trade License Fee</option>
+              <option value="other">Other</option>
+            </select>
+            <div class="hint">Select tax type to load amount</div>
+          </div>
+
+          <div class="grid-2">
+            <div class="field">
+              <label for="houseNumber">House Number</label>
+              <input
+                type="text"
+                id="houseNumber"
+                name="houseNumber"
+                placeholder="e.g., H-123"
+                required
+              />
+            </div>
+            <div class="field">
+              <label for="amount">Tax Amount (₹)</label>
+              <input
+                type="number"
+                id="amount"
+                name="amount"
+                placeholder="Loading..."
+                required
+                min="0"
+                step="0.01"
+                readonly
+              />
+              <div class="hint">Amount set by admin</div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="description">Description (Optional)</label>
+            <textarea 
+              id="description" 
+              name="description" 
+              rows="3" 
+              placeholder="Add any additional details"
+            ></textarea>
+          </div>
+
+          <div class="upi-box" aria-live="polite">
+            <p>💡 UPI Payment Instructions</p>
+            <ul>
+              <li>UPI ID: <strong>gpother@upi</strong></li>
+              <li>Pay using your UPI app before submitting this form</li>
+              <li>Keep your transaction ID ready for verification</li>
+            </ul>
+          </div>
+
+          <div class="actions">
+            <button type="submit" class="btn-primary">Submit Payment</button>
+          </div>
+        </form>
       </div>
-
-      <div>
-        <label for="taxType">Tax Type</label>
-        <select id="taxType" name="taxType" required>
-          <option value="">-- Select Tax Type --</option>
-          <option value="Professional Tax">Professional Tax</option>
-          <option value="Vacant Land Tax">Vacant Land Tax</option>
-          <option value="Trade License Fee">Trade License Fee</option>
-          <option value="Other">Other</option>
-        </select>
-      </div>
-
-      <div>
-        <label for="mobile">Mobile Number</label>
-        <input type="tel" id="mobile" name="mobile" pattern="[6-9]{1}[0-9]{9}" required placeholder="10-digit mobile number" />
-      </div>
-
-      <div>
-        <label for="amount">Amount (₹)</label>
-        <input type="number" id="amount" name="amount" min="1" required placeholder="Enter amount" />
-      </div>
-
-      <div>
-        <label for="transactionId">UPI Transaction ID</label>
-        <input type="text" id="transactionId" name="transactionId" required placeholder="e.g., AXIS123456" />
-      </div>
-
-      <div style="padding-top: 1rem; text-align: center;">
-        <button type="submit" class="submit-button">🧾 Submit Payment</button>
-      </div>
-    </form>
-
-    <div class="info">
-      <p>💡 Make UPI payment via your app <strong>before</strong> submitting this form.</p>
     </div>
-  </div>
+  </main>
+
+  <footer>
+    &copy; 2025 Gram Panchayat Portal. All rights reserved.
+  </footer>
+
+  <script>
+    // Fetch tax amount from admin settings when tax type changes
+    async function loadTaxAmount() {
+      const taxType = document.getElementById('taxType').value;
+      if (!taxType) {
+        document.getElementById('amount').value = '';
+        document.getElementById('amount').placeholder = 'Select tax type first';
+        return;
+      }
+
+      try {
+        const response = await fetch(`/api/user-tax-amounts/other?taxType=${taxType}`);
+        const data = await response.json();
+        document.getElementById('amount').value = data.amount;
+        document.getElementById('amount').placeholder = data.amount > 0 ? '' : 'No amount set';
+      } catch (error) {
+        console.error('Error loading tax amount:', error);
+        document.getElementById('amount').placeholder = 'Error loading amount';
+      }
+    }
+
+    // Load tax amount when tax type changes
+    document.getElementById('taxType').addEventListener('change', loadTaxAmount);
+  </script>
 </body>
 </html>

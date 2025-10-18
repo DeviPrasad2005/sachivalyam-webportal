@@ -4,18 +4,26 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gram Panchayat Portal - Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    
     :root {
-      --google-blue: #4285f4;
-      --google-red: #ea4335;
-      --google-yellow: #fbbc05;
-      --google-green: #34a853;
-      --text-primary: #202124;
-      --text-secondary: #5f6368;
+      --primary: #2563eb;
+      --primary-dark: #1e40af;
+      --primary-light: #3b82f6;
+      --accent: #10b981;
+      --accent-dark: #059669;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
       --background: #ffffff;
-      --surface: #f8f9fa;
-      --border: #dadce0;
+      --surface: #f8fafc;
+      --border: #e2e8f0;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
     }
 
     * {
@@ -25,182 +33,404 @@
     }
 
     body {
-      font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       color: var(--text-primary);
       background: var(--background);
-      line-height: 1.5;
+      line-height: 1.6;
+      overflow-x: hidden;
     }
 
+    /* Header Styles */
     header {
-      background: var(--google-blue);
-      color: white;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      box-shadow: var(--shadow-sm);
+      border-bottom: 1px solid var(--border);
     }
 
     .header-container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 16px 24px;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 2rem;
+    }
+
+    .logo-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 1.25rem;
+      box-shadow: var(--shadow);
     }
 
     .logo {
-      font-size: 24px;
-      font-weight: 500;
-      color: white;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text-primary);
+      padding: 0.5rem;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
     nav a {
-      margin-left: 24px;
-      color: white;
+      color: var(--text-secondary);
       text-decoration: none;
-      font-size: 14px;
+      font-size: 0.9375rem;
       font-weight: 500;
-      transition: opacity 0.3s ease;
+      padding: 0.625rem 1rem;
+      border-radius: 8px;
+      transition: all 0.2s ease;
     }
 
     nav a:hover {
-      opacity: 0.8;
+      color: var(--primary);
+      background: var(--surface);
     }
 
     .btn-outline {
-      padding: 8px 16px;
-      border: 1px solid white;
-      border-radius: 4px;
-      transition: background 0.3s ease;
+      border: 1.5px solid var(--primary);
+      color: var(--primary);
     }
 
     .btn-outline:hover {
-      background: rgba(255, 255, 255, 0.1);
+      background: var(--primary);
+      color: white;
     }
 
-    
+    /* Hero Section */
     .hero-section {
-      background: linear-gradient(135deg, var(--google-blue), var(--google-green));
+      position: relative;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: white;
-      padding: 100px 20px;
+      padding: 8rem 2rem 6rem;
       text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.4;
+    }
+
+    .hero-inner {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      z-index: 1;
     }
 
     .hero-section h2 {
-      font-size: 44px;
-      font-weight: 400;
-      margin-bottom: 20px;
-      line-height: 1.2;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      animation: fadeInUp 0.8s ease-out;
     }
 
     .hero-section p {
-      font-size: 16px;
+      font-size: clamp(1rem, 2vw, 1.25rem);
       font-weight: 400;
-      margin-bottom: 32px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      opacity: 0.9;
+      margin-bottom: 2.5rem;
+      opacity: 0.95;
+      line-height: 1.7;
+      animation: fadeInUp 0.8s ease-out 0.2s both;
     }
 
     .btn-primary {
       background: white;
-      color: var(--google-blue);
-      font-weight: 500;
-      padding: 12px 24px;
-      border-radius: 4px;
+      color: var(--primary);
+      font-weight: 600;
+      padding: 1rem 2.5rem;
+      border-radius: 12px;
       text-decoration: none;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-      transition: box-shadow 0.3s ease;
-      font-size: 14px;
+      box-shadow: var(--shadow-lg);
+      transition: all 0.3s ease;
+      font-size: 1rem;
       display: inline-block;
+      animation: fadeInUp 0.8s ease-out 0.4s both;
     }
 
     .btn-primary:hover {
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-xl);
     }
 
-    
-    .services-section {
+    /* Features Section */
+    .features-section {
+      padding: 5rem 2rem;
       background: var(--surface);
-      padding: 64px 24px;
     }
 
-    .services-section h3 {
+    .features-container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .section-header {
       text-align: center;
-      font-size: 32px;
-      font-weight: 400;
-      color: var(--text-primary);
-      margin-bottom: 48px;
+      margin-bottom: 4rem;
     }
 
+    .section-tag {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section-subtitle {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Services Grid */
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-      max-width: 1200px;
-      margin: auto;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
     }
 
-    .service-box {
-      background: var(--background);
-      padding: 24px;
-      border-radius: 8px;
+    .service-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 16px;
       border: 1px solid var(--border);
-      text-align: center;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-      transition: box-shadow 0.3s ease;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
 
-    .service-box:hover {
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
     }
 
-    .service-box h4 {
-      font-size: 20px;
-      margin-bottom: 12px;
-      color: var(--google-blue);
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-xl);
+      border-color: var(--primary);
     }
 
-    .service-box p {
-      font-size: 14px;
+    .service-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .service-icon {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .service-card h4 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .service-card p {
+      font-size: 1rem;
       color: var(--text-secondary);
-      line-height: 1.5;
+      line-height: 1.6;
     }
 
+    /* Stats Section */
+    .stats-section {
+      padding: 5rem 2rem;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+    }
 
+    .stats-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 3rem;
+      text-align: center;
+    }
+
+    .stat-item h3 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-item p {
+      font-size: 1.125rem;
+      opacity: 0.9;
+    }
+
+    /* Footer */
     footer {
+      background: var(--text-primary);
+      color: white;
+      padding: 3rem 2rem 2rem;
       text-align: center;
-      padding: 24px 20px;
-      margin-top: auto;
-      color: var(--text-secondary);
     }
 
-    footer p {
-      font-size: 14px;
-      font-weight: 400;
-      margin: 0;
+    .footer-content {
+      max-width: 1280px;
+      margin: 0 auto;
     }
 
-    body {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+    .footer-logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
     }
 
-    main {
-      flex: 1;
+    .footer-text {
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 2rem;
+    }
+
+    .footer-bottom {
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.875rem;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .header-container {
+        padding: 1rem;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: var(--shadow-lg);
+        border-top: 1px solid var(--border);
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      nav a {
+        width: 100%;
+        text-align: center;
+        padding: 1rem;
+      }
+
+      .hero-section {
+        padding: 5rem 1.5rem 4rem;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .stats-container {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
-
- 
+  <!-- Header -->
   <header>
     <div class="header-container">
-      <h1 class="logo">Gram Panchayat Portal</h1>
-      <nav>
+      <div class="logo-wrapper">
+        <div class="logo-icon">GP</div>
+        <h1 class="logo">Gram Panchayat Portal</h1>
+      </div>
+      <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Toggle menu">☰</button>
+      <nav id="mainNav">
         <a href="/login">Login</a>
         <a href="/signup" class="btn-outline">Sign Up</a>
         <a href="/admin/login">Admin Login</a>
@@ -208,7 +438,7 @@
     </div>
   </header>
 
-
+  <!-- Hero Section -->
   <section class="hero-section">
     <div class="hero-inner">
       <h2>Empowering Rural India with Digital Governance</h2>
@@ -217,29 +447,103 @@
     </div>
   </section>
 
-  
-  <section class="services-section">
-    <h3>Our Services</h3>
-    <div class="services-grid">
-      <div class="service-box">
-        <h4>🏡 House Tax</h4>
-        <p>Securely view and pay your house/property taxes with ease.</p>
+  <!-- Features Section -->
+  <section class="features-section">
+    <div class="features-container">
+      <div class="section-header">
+        <span class="section-tag">Our Services</span>
+        <h3 class="section-title">Everything You Need in One Place</h3>
+        <p class="section-subtitle">Access all essential village services and manage your taxes efficiently from the comfort of your home.</p>
       </div>
-      <div class="service-box">
-        <h4>🚰 Water Tax</h4>
-        <p>Track water usage and make fast UPI payments from home.</p>
-      </div>
-      <div class="service-box">
-        <h4>💰 Other Taxes</h4>
-        <p>Easily handle all panchayat-level taxes in a single portal.</p>
+      
+      <div class="services-grid">
+        <div class="service-card">
+          <span class="service-icon">🏡</span>
+          <h4>House Tax</h4>
+          <p>Securely view and pay your house/property taxes with ease. Download receipts instantly.</p>
+        </div>
+        
+        <div class="service-card">
+          <span class="service-icon">🚰</span>
+          <h4>Water Tax</h4>
+          <p>Track water usage and make fast UPI payments from home. View consumption history.</p>
+        </div>
+        
+        <div class="service-card">
+          <span class="service-icon">💰</span>
+          <h4>Other Taxes</h4>
+          <p>Easily handle all panchayat-level taxes in a single portal. Simple and transparent.</p>
+        </div>
+
+        <div class="service-card">
+          <span class="service-icon">⚡</span>
+          <h4>Electricity Bill</h4>
+          <p>Pay your electricity bills online and download transaction records instantly.</p>
+        </div>
+
+        <div class="service-card">
+          <span class="service-icon">📢</span>
+          <h4>Announcements</h4>
+          <p>Stay updated with Grama Sabha meetings, events, and important village notices.</p>
+        </div>
+
+        <div class="service-card">
+          <span class="service-icon">🛠️</span>
+          <h4>Government Schemes</h4>
+          <p>Apply for PMAY, MGNREGA, pensions, and other government welfare schemes.</p>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="stats-container">
+      <div class="stat-item">
+        <h3>10K+</h3>
+        <p>Active Users</p>
+      </div>
+      <div class="stat-item">
+        <h3>50K+</h3>
+        <p>Transactions</p>
+      </div>
+      <div class="stat-item">
+        <h3>100+</h3>
+        <p>Villages Served</p>
+      </div>
+      <div class="stat-item">
+        <h3>24/7</h3>
+        <p>Support Available</p>
+      </div>
+    </div>
+  </section>
 
+  <!-- Footer -->
   <footer>
-    <p>Gram Panchayat Portal — Official Digital Governance Platform</p>
+    <div class="footer-content">
+      <div class="footer-logo">Gram Panchayat Portal</div>
+      <p class="footer-text">Official Digital Governance Platform for Rural India</p>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Gram Panchayat Portal. All rights reserved.</p>
+      </div>
+    </div>
   </footer>
 
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById('mainNav');
+      nav.classList.toggle('active');
+    }
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const nav = document.getElementById('mainNav');
+      const menuBtn = document.querySelector('.mobile-menu-btn');
+      
+      if (!nav.contains(event.target) && !menuBtn.contains(event.target)) {
+        nav.classList.remove('active');
+      }
+    });
+  </script>
 </body>
 </html>

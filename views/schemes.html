@@ -4,17 +4,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Government Schemes & Welfare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --google-blue: #4285f4;
-      --google-red: #ea4335;
-      --google-yellow: #fbbc05;
-      --google-green: #34a853;
-      --text-primary: #202124;
-      --text-secondary: #5f6368;
-      --background: #ffffff;
-      --surface: #f8f9fa;
-      --border: #dadce0;
+      --primary: #2563eb;
+      --primary-dark: #1e40af;
+      --primary-light: #3b82f6;
+      --accent: #10b981;
+      --accent-dark: #059669;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --background: #f8fafc;
+      --surface: #ffffff;
+      --border: #e2e8f0;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     }
 
     * {
@@ -24,170 +32,265 @@
     }
 
     body {
-      background-color: var(--surface);
-      font-family: 'Roboto', Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      color: var(--text-primary);
-      line-height: 1.5;
-    }
-
-    header {
-      background-color: var(--google-blue);
-      color: white;
-      padding: 16px 0;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    header .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    h1 {
-      font-size: 24px;
-      font-weight: 600;
-    }
-
-    main {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 40px 24px;
-    }
-
-    section {
-      background-color: var(--background);
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      padding: 24px;
-      border: 1px solid var(--border);
-    }
-
-    h2 {
-      font-size: 20px;
-      font-weight: bold;
-      margin-bottom: 24px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
-    }
-
-    @media (min-width: 768px) {
-      .grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    .card {
-      padding: 16px;
-      border-left: 4px solid;
-      border-radius: 8px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      background-color: var(--background);
-    }
-
-    .blue { background-color: var(--surface); border-color: var(--google-blue); }
-    .blue h3 { color: var(--google-blue); }
-
-    .green { background-color: var(--surface); border-color: var(--google-green); }
-    .green h3 { color: var(--google-green); }
-
-    .yellow { background-color: var(--surface); border-color: var(--google-yellow); }
-    .yellow h3 { color: var(--google-yellow); }
-
-    .purple { background-color: var(--surface); border-color: var(--google-blue); }
-    .purple h3 { color: var(--google-blue); }
-
-    .card h3 {
-      font-size: 18px;
-      font-weight: 600;
-      margin: 0 0 8px;
-    }
-
-    .card p {
-      margin: 4px 0;
-      color: var(--text-primary);
-    }
-
-    .card p:last-child {
-      font-size: 14px;
-      color: var(--text-secondary);
-    }
-
-    footer {
-      text-align: center;
-      padding: 16px 0;
-      margin-top: auto;
-      color: var(--text-secondary);
-    }
-
-    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--background);
       min-height: 100vh;
+      color: var(--text-primary);
+      line-height: 1.6;
       display: flex;
       flex-direction: column;
     }
 
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 800;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow);
+      font-weight: 700;
+      font-size: 1.25rem;
+    }
+
+    .back-link {
+      text-decoration: none;
+      color: white;
+      background: var(--primary);
+      padding: 0.625rem 1.25rem;
+      border-radius: 10px;
+      font-weight: 600;
+      box-shadow: var(--shadow);
+      transition: all 0.2s ease;
+    }
+
+    .back-link:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .hero {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), rgba(16, 185, 129, 0.05));
+      padding: 3rem 2rem 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      color: var(--text-secondary);
+      font-size: clamp(0.9375rem, 2vw, 1.125rem);
+    }
+
     main {
       flex: 1;
+      padding: 3rem 2rem;
+    }
+
+    .main-container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      color: var(--text-primary);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--surface);
+      padding: 1.75rem;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+    }
+
+    .card.blue::before { background: var(--primary); }
+    .card.green::before { background: var(--accent); }
+    .card.yellow::before { background: #f59e0b; }
+    .card.purple::before { background: #8b5cf6; }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--text-primary);
+    }
+
+    .card p {
+      margin: 0.5rem 0;
+      color: var(--text-secondary);
+      font-size: 0.9375rem;
+      line-height: 1.6;
+    }
+
+    .card p:last-child {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-muted);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.875rem;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+
+      .hero {
+        padding: 2rem 1rem 1.5rem;
+      }
+
+      main {
+        padding: 2rem 1rem;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
-
   <!-- Header -->
   <header>
-    <div class="container">
-      <h1>Government Schemes & Welfare Programs</h1>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo">🛠️</div>
+        <span>Government Schemes</span>
+      </div>
+      <nav>
+        <a class="back-link" href="/dashboard">Back to Dashboard</a>
+      </nav>
     </div>
   </header>
 
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <h1>Government Schemes & Welfare Programs</h1>
+      <p>Explore various government schemes and welfare programs available for citizens</p>
+    </div>
+  </section>
+
   <!-- Main Content -->
   <main>
-    <section>
-      <h2>Available Schemes for Residents</h2>
+    <div class="main-container">
+      <h2 class="section-title">Available Schemes for Residents</h2>
 
       <div class="grid">
-
         <!-- Scheme Card -->
         <div class="card blue">
           <h3>PM Awas Yojana</h3>
           <p>Provides housing to economically weaker sections and low-income groups with financial assistance.</p>
-          <p>Eligibility: Income below ₹3 lakh/year</p>
+          <p><strong>Eligibility:</strong> Income below ₹3 lakh/year</p>
         </div>
 
         <!-- Scheme Card -->
         <div class="card green">
           <h3>Rythu Bharosa Scheme</h3>
           <p>Provides ₹13,500 financial aid per year to eligible farmers.</p>
-          <p>Eligibility: Small and marginal farmers</p>
+          <p><strong>Eligibility:</strong> Small and marginal farmers</p>
         </div>
 
         <!-- Scheme Card -->
         <div class="card yellow">
           <h3>Pension Kanuka</h3>
           <p>Monthly pension to senior citizens, widows, and disabled persons.</p>
-          <p>Eligibility: Age above 60 / Disability / Widow</p>
+          <p><strong>Eligibility:</strong> Age above 60 / Disability / Widow</p>
         </div>
 
         <!-- Scheme Card -->
         <div class="card purple">
           <h3>Arogya Sri Health Card</h3>
           <p>Covers major health expenses for BPL families at government hospitals.</p>
-          <p>Eligibility: BPL families with health card</p>
+          <p><strong>Eligibility:</strong> BPL families with health card</p>
         </div>
-
       </div>
-    </section>
+    </div>
   </main>
 
   <!-- Footer -->
   <footer>
-    &copy; 2025 Grama Sachivalayam. All Rights Reserved.
+    &copy; 2025 Gram Panchayat Portal. Serving Rural India Digitally.
   </footer>
-
 </body>
 </html>

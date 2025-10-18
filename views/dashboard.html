@@ -4,283 +4,489 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>User Dashboard - Gram Panchayat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --google-blue: #4285f4;
-      --google-red: #ea4335;
-      --google-yellow: #fbbc05;
-      --google-green: #34a853;
-      --text-primary: #202124;
-      --text-secondary: #5f6368;
-      --background: #ffffff;
-      --surface: #f8f9fa;
-      --border: #dadce0;
+      --primary: #2563eb;
+      --primary-dark: #1e40af;
+      --primary-light: #3b82f6;
+      --accent: #10b981;
+      --accent-dark: #059669;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --background: #f8fafc;
+      --surface: #ffffff;
+      --border: #e2e8f0;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
     }
 
-    * {
+    * { 
+      box-sizing: border-box; 
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
+    }
+
+    html, body { 
+      height: 100%; 
     }
 
     body {
-      background: linear-gradient(135deg, var(--surface) 0%, #f3f4f6 100%);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       color: var(--text-primary);
-      font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      line-height: 1.5;
-    }
-
-    header {
-      background: linear-gradient(90deg, var(--google-blue) 60%, #1d4ed8 100%);
-      color: white;
-      padding: 1.5rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      box-shadow: 0 2px 12px rgba(66, 133, 244, 0.15);
-    }
-
-    header h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    }
-
-    header a {
-      color: #fff;
-      font-size: 1rem;
-      text-decoration: none;
-      background: var(--google-blue);
-      padding: 0.5rem 1.2rem;
-      border-radius: 8px;
-      transition: background 0.2s;
-      font-weight: 500;
-      box-shadow: 0 2px 8px rgba(66, 133, 244, 0.08);
-    }
-
-    header a:hover {
-      background: #1d4ed8;
-      text-decoration: underline;
-    }
-
-    main {
-      max-width: 1200px;
-      margin: auto;
-      padding: 2.5rem 1rem 2rem 1rem;
-    }
-
-    main h2 {
-      color: var(--google-blue);
-      font-size: 2.2rem;
-      font-weight: 700;
-      margin-bottom: 2.5rem;
-      text-align: center;
-      letter-spacing: 1px;
-      text-shadow: 0 2px 8px rgba(66, 133, 244, 0.08);
-    }
-
-    .grid {
-      display: grid;
-      gap: 2rem;
-    }
-
-    .grid-4 {
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      margin-bottom: 2.5rem;
-    }
-
-    .grid-2 {
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      margin-bottom: 2.5rem;
-    }
-
-    .card {
-      background: linear-gradient(135deg, var(--background) 70%, var(--surface) 100%);
-      padding: 2rem 1.5rem;
-      border-radius: 18px;
-      box-shadow: 0 4px 24px rgba(66, 133, 244, 0.08);
-      text-decoration: none;
-      color: inherit;
-      transition: box-shadow 0.2s, transform 0.2s;
-      border: 1px solid var(--border);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card::before {
-      content: '';
-      position: absolute;
-      top: -40px;
-      right: -40px;
-      width: 80px;
-      height: 80px;
-      background: radial-gradient(circle, rgba(66, 133, 244, 0.2) 60%, transparent 100%);
-      z-index: 0;
-    }
-
-    .card:hover {
-      box-shadow: 0 8px 32px rgba(66, 133, 244, 0.18);
-      transform: translateY(-4px) scale(1.03);
-      border-color: var(--google-blue);
-    }
-
-    .card h3 {
-      font-size: 1.4rem;
-      font-weight: 700;
-      margin-bottom: 0.7rem;
-      color: var(--google-blue);
-      z-index: 1;
-      position: relative;
-    }
-
-    .card p {
-      font-size: 1rem;
-      color: var(--text-primary);
-      z-index: 1;
-      position: relative;
-    }
-
-    .downloads {
-      margin-bottom: 5rem;
-    }
-
-    .downloads h3 {
-      font-size: 1.1rem;
-      font-weight: bold;
-      margin-bottom: 1rem;
-      color: var(--google-blue);
-    }
-
-    .downloads ul {
-      list-style: disc;
-      padding-left: 1.2rem;
-    }
-
-    .downloads li {
-      margin-bottom: 0.5rem;
-    }
-
-    .downloads a {
-      color: var(--google-blue);
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .downloads a:hover {
-      text-decoration: underline;
-      color: #1d4ed8;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1.5rem 0;
-      margin-top: auto;
-      color: var(--text-secondary);
-      font-size: 1rem;
-      letter-spacing: 1px;
-    }
-
-    body {
-      min-height: 100vh;
+      background: var(--background);
+      line-height: 1.6;
       display: flex;
       flex-direction: column;
     }
 
-    main {
-      flex: 1;
+    /* Header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: white;
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
     }
 
-    @media (max-width: 700px) {
-      main {
-        padding: 1.2rem 0.2rem;
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white;
+      box-shadow: var(--shadow);
+      font-weight: 700;
+      font-size: 1.25rem;
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--background);
+      border-radius: 10px;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+
+    .user-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+
+    .nav-actions a {
+      text-decoration: none;
+      color: white;
+      background: var(--primary);
+      padding: 0.625rem 1.25rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.9375rem;
+      box-shadow: var(--shadow);
+      transition: all 0.2s ease;
+    }
+
+    .nav-actions a:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Hero / Welcome */
+    .hero {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), rgba(16, 185, 129, 0.05));
+      padding: 3rem 2rem 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-inner { 
+      max-width: 1280px; 
+      margin: 0 auto; 
+    }
+
+    .hero-title {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+      margin: 0 0 0.5rem 0;
+    }
+
+    .hero-sub {
+      color: var(--text-secondary);
+      font-size: clamp(0.9375rem, 2vw, 1.125rem);
+      margin: 0;
+    }
+
+    /* Main Content */
+    main { 
+      flex: 1; 
+      padding: 2rem 0;
+    }
+
+    .section { 
+      padding: 0 2rem 2rem; 
+    }
+
+    .section-header {
+      max-width: 1280px;
+      margin: 0 auto 2rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-subtitle {
+      color: var(--text-secondary);
+      font-size: 0.9375rem;
+    }
+
+    /* Grid Layouts */
+    .grid {
+      display: grid;
+      gap: 1.5rem;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .grid-quick {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .grid-info {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    /* Cards */
+    .card {
+      position: relative;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.75rem;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      color: inherit;
+      text-decoration: none;
+      display: block;
+      transition: all 0.3s ease;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .card h3 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 0.9375rem;
+      line-height: 1.6;
+    }
+
+    /* Quick Stats */
+    .quick-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      max-width: 1280px;
+      margin: 0 auto 3rem;
+    }
+
+    .stat-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-label {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-muted);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.875rem;
+    }
+
+    /* Mobile Menu */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text-primary);
+      padding: 0.5rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
       }
-      .grid-4, .grid-2 {
+
+      .hero {
+        padding: 2rem 1rem 1.5rem;
+      }
+
+      .section {
+        padding: 0 1rem 1.5rem;
+      }
+
+      .grid-quick,
+      .grid-info {
         grid-template-columns: 1fr;
-        gap: 1.2rem;
       }
-      .card {
-        padding: 1.2rem 0.8rem;
+
+      .quick-stats {
+        grid-template-columns: repeat(2, 1fr);
       }
-      main h2 {
-        font-size: 1.3rem;
+
+      .user-info {
+        display: none;
+      }
+
+      .nav-actions a {
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
       }
     }
+
+    @media (max-width: 480px) {
+      .quick-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        padding: 1.5rem;
+      }
+
+      .brand span {
+        display: none;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card {
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    .card:nth-child(1) { animation-delay: 0.1s; }
+    .card:nth-child(2) { animation-delay: 0.2s; }
+    .card:nth-child(3) { animation-delay: 0.3s; }
+    .card:nth-child(4) { animation-delay: 0.4s; }
+    .card:nth-child(5) { animation-delay: 0.5s; }
+    .card:nth-child(6) { animation-delay: 0.6s; }
   </style>
 </head>
 <body>
-
   <!-- Header -->
-  <header>
-    <h1>Gram Panchayat Portal</h1>
-    <nav>
-      <a href="/">Logout</a>
-    </nav>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="/dashboard" class="brand" aria-label="Gram Panchayat Portal">
+        <div class="logo" aria-hidden="true">GP</div>
+        <span>Gram Panchayat</span>
+      </a>
+      <nav class="nav-actions" aria-label="Primary">
+        <div class="user-info">
+          <div class="user-avatar">U</div>
+          <span>User</span>
+        </div>
+        <a href="/" title="Logout">Logout</a>
+      </nav>
+    </div>
   </header>
 
-  <!-- Dashboard Content -->
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <h1 class="hero-title">Welcome to your Dashboard</h1>
+      <p class="hero-sub">Pay taxes, view announcements, and access essential village services from one place.</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
   <main>
-    <h2>Welcome, User!</h2>
+    <!-- Quick Actions -->
+    <div class="section">
+      <div class="section-header">
+        <h2 class="section-title">Quick Actions</h2>
+        <p class="section-subtitle">Access your most used services</p>
+      </div>
+      <div class="grid grid-quick" role="list">
+        <a href="/house-tax" class="card" role="listitem" aria-label="House Tax">
+          <span class="card-icon">🏡</span>
+          <h3>House Tax</h3>
+          <p>Pay your house tax, check status & download receipts.</p>
+        </a>
 
-    <!-- Services Grid -->
-    <div class="grid grid-4">
-      <a href="/house-tax" class="card">
-        <h3>🏡 House Tax</h3>
-        <p>Pay your house tax, check status & download receipts.</p>
-      </a>
+        <a href="/water-tax" class="card" role="listitem" aria-label="Water Tax">
+          <span class="card-icon">🚰</span>
+          <h3>Water Tax</h3>
+          <p>Pay water tax and check consumption history.</p>
+        </a>
 
-      <a href="/water-tax" class="card">
-        <h3>🚰 Water Tax</h3>
-        <p>Pay water tax and check consumption history.</p>
-      </a>
 
-      <a href="/other-taxes" class="card">
-        <h3>💰 Other Taxes</h3>
-        <p>Wealth, sanitation & miscellaneous taxes.</p>
-      </a>
 
-      <a href="/electricity-bill" class="card">
-        <h3>⚡ Electricity Bill</h3>
-        <p>Pay EB bill & download transaction records.</p>
-      </a>
+        <a href="/electricity-bill" class="card" role="listitem" aria-label="Electricity Bill">
+          <span class="card-icon">⚡</span>
+          <h3>Electricity Bill</h3>
+          <p>Pay EB bill & download transaction records.</p>
+        </a>
+      </div>
     </div>
 
-    <!-- Info Sections -->
-    <div class="grid grid-2" style="margin-top: 2rem;">
-      <a href="/announcements" class="card">
-        <h3>📢 Grama Sabha Announcements</h3>
-        <p>See upcoming events, meetings & resolutions.</p>
-      </a>
+    <!-- Info & Services -->
+    <div class="section">
+      <div class="section-header">
+        <h2 class="section-title">Information & Services</h2>
+        <p class="section-subtitle">Stay informed and connected</p>
+      </div>
+      <div class="grid grid-info" role="list">
+        <a href="/announcements" class="card" role="listitem" aria-label="Grama Sabha Announcements">
+          <span class="card-icon">📢</span>
+          <h3>Announcements</h3>
+          <p>See upcoming events, meetings & resolutions.</p>
+        </a>
 
-      <a href="/schemes" class="card">
-        <h3>🛠️ Govt. Schemes & Welfare</h3>
-        <p>Apply for PMAY, MGNREGA, pensions & more.</p>
-      </a>
+        <a href="/schemes" class="card" role="listitem" aria-label="Schemes">
+          <span class="card-icon">🛠️</span>
+          <h3>Govt. Schemes</h3>
+          <p>Apply for PMAY, MGNREGA, pensions & more.</p>
+        </a>
 
-      <a href="/notices" class="card">
-        <h3>📣 Recent Notices</h3>
-        <p>Tax deadlines, public service alerts, health drives.</p>
-      </a>
+        <a href="/notices" class="card" role="listitem" aria-label="Recent Notices">
+          <span class="card-icon">📣</span>
+          <h3>Recent Notices</h3>
+          <p>Tax deadlines, public service alerts, health drives.</p>
+        </a>
 
-      <a href="/emergency" class="card">
-        <h3>🚨 Emergency Contacts</h3>
-        <p>Ambulance, Police, Fire Station, Village Nurse.</p>
-      </a>
+        <a href="/emergency" class="card" role="listitem" aria-label="Emergency Contacts">
+          <span class="card-icon">🚨</span>
+          <h3>Emergency</h3>
+          <p>Ambulance, Police, Fire Station, Village Nurse.</p>
+        </a>
+      </div>
     </div>
-
-    <!-- Forms & Downloads -->
-   
+  </main>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Gram Panchayat Portal. Serving Rural India Digitally.</p>
+    &copy; 2025 Gram Panchayat Portal. Serving Rural India Digitally.
   </footer>
+
 
 </body>
 </html>
