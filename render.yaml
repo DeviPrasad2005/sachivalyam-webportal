@@ -23,7 +23,7 @@ services:
   - type: pserv
     name: gram-db
     env: docker
-    image: mysql:8.0
+    image: mysql:8
     envVars:
       - key: MYSQL_ROOT_PASSWORD
         generateValue: true
